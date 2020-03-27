@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DQS COVID-19</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+
+
+</head>
+<body>
+    
+
+    <form action="http://192.168.100.233:5050/Registro" method="post" onsubmit="return validar();">
+        <div class="form-group">
+          <!-- Select pais -->
+             <!--<label for="sel1"  placeholder="Selcciona tu Pais">Select Pais:</label> -->
+              <select class="form-control" name="Test" id="Test">
+                <option selected="true" disabled="disabled">Numero Test</option>
+              </select>
+            <br>
+          <!-- Select Provincia -->
+            <!-- <label for="sel1">Select Region :</label> -->
+            <select class="form-control" name="Ciclo" id="Ciclo"   >
+              <option selected="true" disabled="disabled">Numero Ciclo</option>
+            </select>
+            <br>
+          </div>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Person Name</th>
+                <th scope="col">Total Identificaciones</th>
+                <th scope="col">Match confidence</th>
+            </tr>
+        </thead>
+        <tbody id="contenido">
+            
+        </tbody>
+    </table>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
+<script src="js/validar.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+
+</html>
