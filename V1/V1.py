@@ -42,10 +42,10 @@ GuidTest = str(IdUnico)
 Hostname = socket.gethostname()
 DateTest = str(datetime.datetime.now())
 NumerodeCiclos = 4
-DuracionTest = 3600
-Descripcion = "4 Camara Multiple (Videos), Cada 1 Segundo, Modo Edge"
+DuracionTest = 30
+Descripcion = "Mo Simple Multiple (Rapido Y Furios), Cada 1 Segundo, Modo Edge"
 # El recurso debe ser tomado del Global vars
-Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/"
+Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/R%c3%a1pidos%20y%20Furiosos%209.mp4"
 
 # Data Secundary
 Fecha = DateTest[0:10]
