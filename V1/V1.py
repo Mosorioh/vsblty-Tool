@@ -53,8 +53,8 @@ CameraMode = "Simple"
 #CameraMode = "Polling" 
 #
 DateTest = str(datetime.datetime.now())
-NumerodeCiclos = 1
-DuracionTest = 180
+NumerodeCiclos = 4
+DuracionTest = 300
 Descripcion = " Simple Simple (Axis), Cada 1 Segundo, Modo Edge"
 # El recurso debe ser tomado del Global vars
 Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/R%c3%a1pidos%20y%20Furiosos%209.mp4"
