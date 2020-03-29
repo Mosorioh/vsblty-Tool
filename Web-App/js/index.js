@@ -53,8 +53,8 @@ $(document).ready(function(){
             ResumenCiclo.innerHTML += `
             <tr>
                     <th scope="row">${ n }</th>
-                    <td>--</td>
-                    <td>${ dato.Ciclo }</td>
+                    
+                    <td>Ciclo - ${ dato.Ciclo }</td>
                     <td>${ dato.TotalIdentificacion }</td>
                     <td>${ dato.TotalFrameReceived }</td>
                     <td>${ dato.TotalBeforeProcessing }</td>
@@ -178,7 +178,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5010/Testnumero/'+Testnumero+'/2')
+   fetch('http://181.199.66.129:5080/Testnumero/'+Testnumero+'/2')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -194,12 +194,13 @@ $(document).ready(function(){
             n++;
             contenido2.innerHTML += `
             <tr>
-                    <th scope="row">${ n }</th>
-                    <td>${ dato.Name }</td>
-                    <td>${ dato.Total }</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
+            <th scope="row">${ n }</th>
+            <td>${ dato.PersonId }</td>
+            <td>${ dato.Name }</td>
+            <td>${ dato.Total }</td>
+            <td>${ dato.Minimo } %</td>
+            <td>${ dato.Maximo } %</td>
+            <td>${ dato.Average.toFixed(2)} %</td>
                 </tr>
                 
             
@@ -222,7 +223,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5010/Testnumero/'+Testnumero+'/3')
+   fetch('http://181.199.66.129:5080/Testnumero/'+Testnumero+'/3')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -238,12 +239,13 @@ $(document).ready(function(){
             n++;
             contenido3.innerHTML += `
             <tr>
-                    <th scope="row">${ n }</th>
-                    <td>${ dato.PersonId }</td>
-                    <td>${ dato.Name }</td>
-                    <td>${ dato.Total }</td>
-                    <td>${ dato.Minimo }</td>
-                    <td>${ dato.Maximo }</td>
+            <th scope="row">${ n }</th>
+            <td>${ dato.PersonId }</td>
+            <td>${ dato.Name }</td>
+            <td>${ dato.Total }</td>
+            <td>${ dato.Minimo } %</td>
+            <td>${ dato.Maximo } %</td>
+            <td>${ dato.Average.toFixed(2)} %</td>
                     
                 
             
@@ -266,7 +268,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5010/Testnumero/'+Testnumero+'/4')
+   fetch('http://181.199.66.129:5080/Testnumero/'+Testnumero+'/4')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -282,13 +284,13 @@ $(document).ready(function(){
             n++;
             contenido4.innerHTML += `
             <tr>
-                    <th scope="row">${ n }</th>
-                    <td>${ dato.Name }</td>
-                    <td>${ dato.Total }</td>
-                    
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
+            <th scope="row">${ n }</th>
+            <td>${ dato.PersonId }</td>
+            <td>${ dato.Name }</td>
+            <td>${ dato.Total }</td>
+            <td>${ dato.Minimo } %</td>
+            <td>${ dato.Maximo } %</td>
+            <td>${ dato.Average.toFixed(2)} %</td>
                 </tr>
                 
             
@@ -323,17 +325,25 @@ $(document).ready(function(){
   Fecha.innerHTML = '';
   TestNumero.innerHTML = '';
   HostName.innerHTML = '';
-  Resultado.innerHTML = '';
+  CamarasConectadas.innerHTML = '';
   TCiclos.innerHTML = '';
   DCiclo.innerHTML = '';
   Descripcion.innerHTML = '';
   Recurso.innerHTML = '';
-        
+  Version.innerHTML = '';    
+  CameraMode.innerHTML = ''; 
+  IdentificationService.innerHTML = ''; 
+  BetweenPictures.innerHTML = ''; 
+  
 
   Fecha.innerHTML += `${ datos[0].Fecha }`;
   TestNumero.innerHTML += `${ datos[0].GUID }`;
   HostName.innerHTML += `${ datos[0].Hostname }`;
-  Resultado.innerHTML += `${ datos[0].Resultado }`;
+  Version.innerHTML += `${ datos[0].Version }`;
+  IdentificationService.innerHTML += `${ datos[0].IdentificationService }`;
+  BetweenPictures.innerHTML += ` Cada ${ datos[0].BetweenPictures } Segundo`;
+  CameraMode.innerHTML += `${ datos[0].CameraMode }`;
+  CamarasConectadas.innerHTML += `-`;
   TCiclos.innerHTML += `${ datos[0].TotalCiclos }`;
   DCiclo.innerHTML += `${ datos[0].Duracion } Segundos` ;
   Descripcion.innerHTML += `${ datos[0].Descripcion }`;

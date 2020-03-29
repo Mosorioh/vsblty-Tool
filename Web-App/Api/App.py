@@ -35,7 +35,7 @@ def select():
     try:
         with connection.cursor() as cursor:
             # Read a single record
-            sql = "SELECT `Id`, `GUID`, `CameraMode`, `IdentificationService`, `BetweenPictures`, `Descripcion` FROM `Test`"
+            sql = "SELECT `Id`, `GUID`, `Version`, `CameraMode`, `IdentificationService`, `BetweenPictures`, `Descripcion` FROM `Test`"
             cursor.execute(sql)
             result = cursor.fetchall()
             print(result)
