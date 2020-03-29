@@ -3,11 +3,11 @@
 //<!-- Get all paises -->
 //<script>
     //fetch('http://181.199.66.129:5010/pais')
-    fetch('http://181.199.66.129:5010/Test')
+    fetch('http://181.199.66.129:5080/Test')
     .then(ListTest=>ListTest.json())
     .then(ListTest=>{
-      //console.log("Test")
-        //console.log(ListTest)
+      console.log("Test-----------")
+        console.log(ListTest)
         
         var resultado = document.getElementById('Test');
         var n = 0;
@@ -17,7 +17,7 @@
         for(let dato of ListTest){
             n++;
             resultado.innerHTML += `
-            <option value="${dato.Id}"> (${dato.Id}) - ${dato.GUID}</option>
+            <option value="${dato.Id}"> (${dato.Id}) - ${dato.GUID} - ${dato.CameraMode} Camera - ${dato.Descripcion}</option>
             
             `;
            
@@ -159,7 +159,7 @@ $(document).ready(function(){
   })
 
   
-// </script>
+// </script>  
 
 
 //<!----- Script 3------>

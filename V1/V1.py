@@ -54,8 +54,8 @@ CameraMode = "Simple"
 #
 DateTest = str(datetime.datetime.now())
 NumerodeCiclos = 4
-DuracionTest = 300
-Descripcion = " Simple Simple (Axis), Cada 1 Segundo, Modo Edge"
+DuracionTest = 30
+Descripcion = "Video Rapido y Furioso"
 # El recurso debe ser tomado del Global vars
 Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/R%c3%a1pidos%20y%20Furiosos%209.mp4"
 
@@ -376,12 +376,61 @@ while CountTest <= NumerodeCiclos:
         # Close opend file
         archivo_texto.close()
 
-    CountTest +=1 
+     
 
     # ////////////////////////////////////////////////////////////
     # Por cada Archivo dentro del directorio, se realiza un ciclo for para recorrer cada linea y verificar hits  
     # ////////////////////////////////////////////////////////////
     time.sleep(1)
+
+    rutaFrameReceived = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/FrameReceived/"
+    dirsFrameReceived = os.listdir(rutaFrameReceived)
+    elementosFrameReceived = len(dirsFrameReceived)
+    
+    #
+    rutaBeforeProcessing = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/BeforeProcessingOpenVino/"
+    dirsBeforeProcessing = os.listdir(rutaBeforeProcessing)
+    elementosBeforeProcessing = len(dirsBeforeProcessing)
+    
+    #
+    rutaFaceAPIResults = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/Face API Results/"
+    dirsFaceAPIResults = os.listdir(rutaFaceAPIResults)
+    elementosFaceAPIResults = len(dirsFaceAPIResults)
+
+    
+    print(GuidTest)
+    print(CountTest)
+    print (i)
+    print(elementosFrameReceived)
+    print(elementosBeforeProcessing)
+    print(elementosFaceAPIResults)
+    #input()
+
+
+    # Connect to the database
+    connection = pymysql.connect(host='181.199.66.129',
+                                user='Qatest',
+                                password='Quito.2019',
+                                db='Log-identificacion',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+    try:
+        with connection.cursor() as cursor:
+    # Create a new record
+                            
+            sql = "INSERT INTO `CycleSummary` (`GuidTest`, `Ciclo`, `TotalIdentificacion`, `TotalFrameReceived`, `TotalBeforeProcessing`, `TotalFaceAPIResults`) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(sql, (GuidTest, CountTest, i, elementosFrameReceived, elementosBeforeProcessing, elementosFaceAPIResults))
+                
+
+
+    # connection is not autocommit by default. So you must commit to save
+    # your changes.
+            connection.commit()
+
+    finally:
+        connection.close()
+
+    CountTest +=1
 
     #/////////////////////////////////////////////////////
     #--------- Proceso 3 -------------
@@ -403,6 +452,13 @@ while CountTest <= NumerodeCiclos:
     time.sleep(1)
     print ("------ Mover Process Photos-----")
     print ("///////////////////////////////////////////////////////////////////////////////")
+
+    #/////////////////////////////////////////////////////
+    #--------- Proceso 4 -------------
+    #/////////////////////////////////////////////////////
+
+  
+
 
     print ("*****************************************************************")
     try:
