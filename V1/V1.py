@@ -54,8 +54,8 @@ CameraMode = "Simple"
 #
 DateTest = str(datetime.datetime.now())
 NumerodeCiclos = 4
-DuracionTest = 30
-Descripcion = "Video Rapido y Furioso"
+DuracionTest = 180
+Descripcion = "Dwey Frame Static"
 # El recurso debe ser tomado del Global vars
 Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/R%c3%a1pidos%20y%20Furiosos%209.mp4"
 
@@ -397,7 +397,7 @@ while CountTest <= NumerodeCiclos:
     dirsFaceAPIResults = os.listdir(rutaFaceAPIResults)
     elementosFaceAPIResults = len(dirsFaceAPIResults)
 
-    
+    print(TestID)
     print(GuidTest)
     print(CountTest)
     print (i)
@@ -418,8 +418,8 @@ while CountTest <= NumerodeCiclos:
         with connection.cursor() as cursor:
     # Create a new record
                             
-            sql = "INSERT INTO `CycleSummary` (`GuidTest`, `Ciclo`, `TotalIdentificacion`, `TotalFrameReceived`, `TotalBeforeProcessing`, `TotalFaceAPIResults`) VALUES (%s, %s, %s, %s, %s, %s)"
-            cursor.execute(sql, (GuidTest, CountTest, i, elementosFrameReceived, elementosBeforeProcessing, elementosFaceAPIResults))
+            sql = "INSERT INTO `CycleSummary` (`IdTest`, `GuidTest`, `Ciclo`, `TotalIdentificacion`, `TotalFrameReceived`, `TotalBeforeProcessing`, `TotalFaceAPIResults`) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(sql, (TestID, GuidTest, CountTest, i, elementosFrameReceived, elementosBeforeProcessing, elementosFaceAPIResults))
                 
 
 

@@ -27,42 +27,50 @@
     
 //</script>
 
-/*
-//<!----- Script 2------>
+
+//<!----- Script 3------>
 //<!-- get provincia Segun opcion seleccionada en el drowndoon-->
 //<script>	  
-	$(document).ready(function(){
-    $("#Test").on("change",function(){						
-      var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
-      //console.log("Test Seleccionado: " + Testnumero) 
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
 
-  fetch('http://181.199.66.129:5010/ciclo/'+Testnumero+'')
+   fetch('http://181.199.66.129:5080/ResumenCiclo/'+Testnumero+'')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen ciclo")   
+  console.log( datos)
   
-
-	.then(Listciclos=>Listciclos.json())
-	.then(Listciclos=>{
-  //console.log("Ciclos")   
-  //console.log( Listciclos)
-  
-    var resultado = document.getElementById('Ciclo');
-        var n = 0;
-
+    
+      
+  ResumenCiclo.innerHTML = '';
         
-        Ciclo.innerHTML = '<option selected="Ciclo" >Ciclo</option>';
-        
-        for(let dato of Listciclos){
+        n = 0
+        for(let dato of datos){
             n++;
-            resultado.innerHTML += `
-            <option value="${dato.CicloTest}">Cliclo: ${dato.CicloTest}</option>
+            ResumenCiclo.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    <td>--</td>
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.TotalIdentificacion }</td>
+                    <td>${ dato.TotalFrameReceived }</td>
+                    <td>${ dato.TotalBeforeProcessing }</td>
+                    <td>${ dato.TotalFaceAPIResults }</td>
+                </tr>
+                
             
             `;
 			}
 			
 			})
 		})
-	})
-//</script>
-*/
+  })
+
+  
+// </script>
 
 //<!----- Script 3------>
 //<!-- get provincia Segun opcion seleccionada en el drowndoon-->
@@ -338,3 +346,5 @@ $(document).ready(function(){
 
   
 // </script>
+
+

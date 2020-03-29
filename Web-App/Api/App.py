@@ -148,7 +148,35 @@ def DetailTest(idtest):
         connection.close()
 
 
+#//////////////////////////////////////////
+# Api Pais
+#//////////////////////////////////////////
+@app.route('/ResumenCiclo/<idtest>')
+def ResumenCiclo(idtest):
+    # Connect to the database
+    connection = pymysql.connect(host='192.168.100.51',
+                                user='Qatest',
+                                password='Quito.2019',
+                                db='Log-identificacion',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT * FROM `CycleSummary` WHERE `IdTest` =%s "
+            cursor.execute(sql, idtest)
+            result = cursor.fetchall()
+            print(result)
+
+        return jsonify(result)
+    finally:
+        connection.close()
+
+
+
+
 
 if __name__ == '__main__':
-    app.run(host='192.168.100.233', port=5010, debug=True)
-    #app.run(host='192.168.100.51', port=5010, debug=True)
+    #app.run(host='192.168.100.233', port=5010, debug=True)
+    app.run(host='192.168.100.51', port=5080, debug=True)
