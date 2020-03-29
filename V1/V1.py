@@ -40,10 +40,22 @@ IdUnico = uuid.uuid4()
 # Main Data
 GuidTest = str(IdUnico)
 Hostname = socket.gethostname()
+#
+Version = "4.20.327.2"
+#
+#IdentificationService = "Cloud"
+IdentificationService = "Edge"
+#
+BetweenPictures = 1
+#
+CameraMode = "Simple" 
+#CameraMode = "Multiple" 
+#CameraMode = "Polling" 
+#
 DateTest = str(datetime.datetime.now())
-NumerodeCiclos = 4
-DuracionTest = 30
-Descripcion = "Mo Simple Multiple (Rapido Y Furios), Cada 1 Segundo, Modo Edge"
+NumerodeCiclos = 6
+DuracionTest = 300
+Descripcion = " Simple Simple (Axis), Cada 1 Segundo, Modo Edge"
 # El recurso debe ser tomado del Global vars
 Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/R%c3%a1pidos%20y%20Furiosos%209.mp4"
 
@@ -71,8 +83,8 @@ try:
     with connection.cursor() as cursor:
 # Create a new record
                          
-        sql = "INSERT INTO `Test` (`Fecha`, `GUID`, `Hostname`, `TotalCiclos`, `Duracion`, `Descripcion`,  `Recurso`) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        cursor.execute(sql, (DateTest, GuidTest, Hostname, NumerodeCiclos, DuracionTest, Descripcion, Recurso ))
+        sql = "INSERT INTO `Test` (`Fecha`, `GUID`, `Hostname`, `TotalCiclos`, `Duracion`, `Descripcion`,  `Recurso`,  `Version`,  `IdentificationService`,  `BetweenPictures`,  `CameraMode`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (DateTest, GuidTest, Hostname, NumerodeCiclos, DuracionTest, Descripcion, Recurso, Version, IdentificationService, BetweenPictures, CameraMode))
         
 # connection is not autocommit by default. So you must commit to save
 # your changes.
@@ -288,6 +300,8 @@ while CountTest <= NumerodeCiclos:
                 CorteGroupId = PosicionGroupId + 9 
                 CorteMatchProbability = PosicionMatchProbability + 18
                 CorteLocalPersistedFaceId = ClientLine.find("LocalPersistedFaceId") + 22
+                Matchsincoma = CorteLocalPersistedFaceId - 2
+
 
                 # ///////////////////////////////////////////////////////////
                 # print ("PosicionNamePerson ", PosicionNamePerson)
@@ -302,7 +316,7 @@ while CountTest <= NumerodeCiclos:
                 NamePerson = ClientLine[PosicionNamePerson:PosicionPersonId]
                 PersonId = ClientLine[CortePersonId:PosicionGroupId]
                 GroupId = ClientLine[CorteGroupId:PosicionMatchProbability]
-                MatchProbability = ClientLine[CorteMatchProbability:PosicionLocalPersistedFaceId]
+                MatchProbability = ClientLine[CorteMatchProbability:Matchsincoma]
                 LocalPersistedFaceId = ClientLine[CorteLocalPersistedFaceId:-40]
 
                 """    
