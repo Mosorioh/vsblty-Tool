@@ -53,8 +53,8 @@ CameraMode = "Simple"
 #CameraMode = "Polling" 
 #
 DateTest = str(datetime.datetime.now())
-NumerodeCiclos = 6
-DuracionTest = 300
+NumerodeCiclos = 1
+DuracionTest = 180
 Descripcion = " Simple Simple (Axis), Cada 1 Segundo, Modo Edge"
 # El recurso debe ser tomado del Global vars
 Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/R%c3%a1pidos%20y%20Furiosos%209.mp4"
@@ -300,7 +300,7 @@ while CountTest <= NumerodeCiclos:
                 CorteGroupId = PosicionGroupId + 9 
                 CorteMatchProbability = PosicionMatchProbability + 18
                 CorteLocalPersistedFaceId = ClientLine.find("LocalPersistedFaceId") + 22
-                Matchsincoma = CorteLocalPersistedFaceId - 2
+                Matchsincoma = CorteLocalPersistedFaceId - 25
 
 
                 # ///////////////////////////////////////////////////////////
@@ -319,14 +319,14 @@ while CountTest <= NumerodeCiclos:
                 MatchProbability = ClientLine[CorteMatchProbability:Matchsincoma]
                 LocalPersistedFaceId = ClientLine[CorteLocalPersistedFaceId:-40]
 
-                """    
+                  
                 print ("Name person:", NamePerson)
                 print ("Id   person:", PersonId)
                 print ("GroupId    :", GroupId)
-                print ("MatchPro   :", MatchProbability)
+                print ("MatchPro-2   :", MatchProbability)
                 print ("LocalPer   :", LocalPersistedFaceId)
-                input ()
-                """
+                #input ()
+                
 
                 # ////////////////////////////////////////////////////////////
                 # Obtener el valor de cada propiedad segun la posicion

@@ -77,7 +77,7 @@ $(document).ready(function(){
       var CicloSelectd=$(this).val()//obtenemos el valor seleccionado en una variable	
       console.log("Ciclo Seleccionado: " + CicloSelectd) 
 			
-   fetch('http://181.199.66.129:5010/Resultado/'+Testnumero+'/'+CicloSelectd+'')
+   fetch('http://181.199.66.129:5080/Resultado/'+Testnumero+'/'+CicloSelectd+'')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -123,11 +123,11 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5010/Testnumero/'+Testnumero+'/1')
+   fetch('http://181.199.66.129:5080/Testnumero/'+Testnumero+'/1')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
-  console.log("Resultado")   
+  console.log("Resultado-------------")   
   console.log( datos)
   
     
@@ -139,12 +139,14 @@ $(document).ready(function(){
             n++;
             contenido.innerHTML += `
             <tr>
-                    <th scope="row">${ n }</th>
-                    <td>${ dato.Name }</td>
-                    <td>${ dato.Total }</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
+                    
+            <th scope="row">${ n }</th>
+            <td>${ dato.PersonId }</td>
+            <td>${ dato.Name }</td>
+            <td>${ dato.Total }</td>
+            <td>${ dato.Minimo } %</td>
+            <td>${ dato.Maximo } %</td>
+            <td>${ dato.Average.toFixed(2)} %</td>
 
                 </tr>
                 
@@ -229,11 +231,12 @@ $(document).ready(function(){
             contenido3.innerHTML += `
             <tr>
                     <th scope="row">${ n }</th>
+                    <td>${ dato.PersonId }</td>
                     <td>${ dato.Name }</td>
                     <td>${ dato.Total }</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
+                    <td>${ dato.Minimo }</td>
+                    <td>${ dato.Maximo }</td>
+                    
                 
             
             `;

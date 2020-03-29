@@ -87,7 +87,8 @@ def Resultado(idtest, idCiclo):
     try:
         with connection.cursor() as cursor:
             # Read a single record
-            sql = "SELECT `Name`, COUNT(*) AS Total FROM `Identificacion` WHERE `TestID` =%s AND `CicloTest` =%s GROUP BY `Name`"
+            sql = "SELECT `PersonId`, `Name`, COUNT(*) AS Total, MIN(`MatchProbability`) AS Minimo, MAX(`MatchProbability`) AS Maximo, AVG(`MatchProbability`) AS Average  FROM `Identificacion` WHERE `TestID` =%s AND `CicloTest` =%s GROUP BY `PersonId`,`Name`"
+
             cursor.execute(sql, (idtest, idCiclo))
             result = cursor.fetchall()
             print(result)
@@ -112,7 +113,7 @@ def Testnumero(idtest, idCiclo):
     try:
         with connection.cursor() as cursor:
             # Read a single record
-            sql = "SELECT `Name`, COUNT(*) AS Total FROM `Identificacion` WHERE `TestID`=%s AND `CicloTest`=%s GROUP BY `Name`"
+            sql = "SELECT `PersonId`, `Name`, COUNT(*) AS Total, MIN(`MatchProbability`) AS Minimo, MAX(`MatchProbability`) AS Maximo, AVG(`MatchProbability`) AS Average  FROM `Identificacion` WHERE `TestID` =%s AND `CicloTest` =%s GROUP BY `PersonId`,`Name`"
             cursor.execute(sql, (idtest, idCiclo))
             result = cursor.fetchall()
             print(result)
