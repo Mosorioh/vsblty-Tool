@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Analisis Resultados</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<style>
+
+  body{
+font-size: small;
+background-color: rgb(1, 63, 71);
+  }
+  .container{
+background-color: white;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+    
+  <div class="container ">
+    <div class="row justify-content-center">
+      <h5>Results Comparison:</h5>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <h5>Select Test (Mulple Camera):</h5>
+        <form>
+            <div class="form-group">
+              
+                  <select class="form-control" name="Test1" id="Test1">
+                    <option selected="true" disabled="disabled">Test Number</option>
+                  </select>
+        </form>
+        </div>
+        <h4 align="center">Summary Test Multiple-Camera</h4>
+        <table class="table table-striped table-dark table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    
+               
+                    <th scope="col">Total Identification</th>
+                    <th scope="col">Frame Received</th>
+                    <th scope="col">Before Processing</th>
+                    <th scope="col">Difference</th>
+                    <th scope="col">Face API </th>
+                    
+                </tr>
+            </thead>
+            <tbody id="ResumenCiclo1">
+                
+            </tbody>
+        </table>
+
+        <h5 align="center"> "Ciclo 1" Multiple-Camera</h5>
+        <table class="table table-hover">
+            <thead style="color: white; background-color: rgb(177, 177, 177);">
+                <tr>
+                    <th scope="col">#</th>
+                    
+                    <th scope="col">Person Name</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">(Min)</th>
+                    <th scope="col">(Max)</th>
+                    <th scope="col">(Average)</th>
+
+                </tr>
+            </thead>
+            <tbody id="contenido1"style="background-color: lightslategrey;">
+                
+            </tbody>
+        </table>
+    
+</div>
+        
+      </div>
+      <div class="row" style="background-color: rgb(49, 0, 0);">
+
+          <div class="col-md-6">
+            <h5>Select Test: (Camera 1)</h5>
+            <form>
+                <div class="form-group">
+                  
+                      <select class="form-control" name="Test2" id="Test2">
+                        <option selected="true" disabled="disabled">Test Number</option>
+                      </select>
+                </div>
+            </form>
+                  
+                  <h4 align="center">Summary Test Multiple-Camera</h4>
+                  <table class="table table-striped table-dark table-hover">
+                      <thead class="thead-dark">
+                          <tr>
+                              <th scope="col">#</th>
+                              
+                         
+                              <th scope="col">Total Identification</th>
+                              <th scope="col">Frame Received</th>
+                              <th scope="col">Before Processing</th>
+                              <th scope="col">Difference</th>
+                              <th scope="col">Face API </th>
+                              
+                          </tr>
+                      </thead>
+                      <tbody id="ResumenCiclo2">
+                          
+                      </tbody>
+                  </table>
+          
+                  <h5 align="center"> "Ciclo 1" Multiple-Camera</h5>
+                  <table class="table table-hover">
+                      <thead style="color: white; background-color: rgb(177, 177, 177);">
+                          <tr>
+                              <th scope="col">#</th>
+                              
+                              <th scope="col">Person Name</th>
+                              <th scope="col">Total</th>
+                              <th scope="col">(Min)</th>
+                              <th scope="col">(Max)</th>
+                              <th scope="col">(Average)</th>
+          
+                          </tr>
+                      </thead>
+                      <tbody id="contenido2"style="background-color: lightslategrey;">
+                          
+                      </tbody>
+                  </table>
+              </div>
+     
+          <div class="col-md-6">
+            <h5>Select Test: (Camera 2)</h5>
+            <form>
+                <div class="form-group">
+                  
+                      <select class="form-control" name="Test3" id="Test3">
+                        <option selected="true" disabled="disabled">Test Number</option>
+                      </select>
+                    </form>
+                  </div>
+                  <h4 align="center">Summary Test Multiple-Camera</h4>
+                  <table class="table table-striped table-dark table-hover">
+                      <thead class="thead-dark">
+                          <tr>
+                              <th scope="col">#</th>
+                              
+                         
+                              <th scope="col">Total Identification</th>
+                              <th scope="col">Frame Received</th>
+                              <th scope="col">Before Processing</th>
+                              <th scope="col">Difference</th>
+                              <th scope="col">Face API </th>
+                              
+                          </tr>
+                      </thead>
+                      <tbody id="ResumenCiclo3">
+                          
+                      </tbody>
+                  </table>
+          
+                  <h5 align="center"> "Ciclo 1" Multiple-Camera</h5>
+                  <table class="table table-hover">
+                      <thead style="color: white; background-color: rgb(177, 177, 177);">
+                          <tr>
+                              <th scope="col">#</th>
+                              
+                              <th scope="col">Person Name</th>
+                              <th scope="col">Total</th>
+                              <th scope="col">(Min)</th>
+                              <th scope="col">(Max)</th>
+                              <th scope="col">(Average)</th>
+          
+                          </tr>
+                      </thead>
+                      <tbody id="contenido3"style="background-color: lightslategrey;">
+                          
+                      </tbody>
+                  </table>
+          </div>
+        </div>
+    </div>
+    </div>
+  
+  </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
+<script type="text/javascript" src="js/Result-comparation.js"></script>
+
+</html>

@@ -17,7 +17,7 @@
         for(let dato of ListTest){
             n++;
             resultado.innerHTML += `
-            <option value="${dato.Id}"> (${dato.Id}) - ${dato.GUID} - ${dato.CameraMode} Camera - ${dato.Descripcion}</option>
+            <option value="${dato.Id}"> (${dato.Id}) - ${dato.GUID} - ${dato.CameraMode} Camera - ${dato.Hostname} - ${dato.Descripcion}</option>
             
             `;
            
@@ -58,6 +58,7 @@ $(document).ready(function(){
                     <td>${ dato.TotalIdentificacion }</td>
                     <td>${ dato.TotalFrameReceived }</td>
                     <td>${ dato.TotalBeforeProcessing }</td>
+                    <td>${ dato.TotalFrameReceived - dato.TotalBeforeProcessing }</td>
                     <td>${ dato.TotalFaceAPIResults }</td>
                 </tr>
                 

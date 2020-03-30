@@ -33,19 +33,13 @@ background-color: white;
 <body>
     
   <div class="container ">
-    <h5>Seleccionar:</h5>
+    <h5>Select Test:</h5>
     <form>
         <div class="form-group">
-          <!-- Select pais -->
-             <!--<label for="sel1"  placeholder="Selcciona tu Pais">Select Pais:</label> -->
+          
               <select class="form-control" name="Test" id="Test">
-                <option selected="true" disabled="disabled">Numero Test</option>
+                <option selected="true" disabled="disabled">Test Number</option>
               </select>
-          <!-- Select Provincia -->
-            <!-- <label for="sel1">Select Region :</label> 
-            <select class="form-control" name="Ciclo" id="Ciclo"   >
-              <option selected="true" disabled="disabled">Numero Ciclo</option>
-            </select>-->
 
           </div>
     </form>
@@ -57,7 +51,7 @@ background-color: white;
     <ul class="list-group m-3">
       <div class="row">
         <div class="col-sm-6">
-          <li class="list-group-item"> <strong>Fecha: </strong> <div id="Fecha"> - </div></li>
+          <li class="list-group-item"> <strong>Test Date: </strong> <div id="Fecha"> - </div></li>
           <li class="list-group-item"><strong>GUID: </strong> <div id="TestNumero"> - </div></li>
           <li class="list-group-item"><strong>HostName: </strong> <div id="HostName">- </div></li>
           <li class="list-group-item"><strong>Version: </strong> <div id="Version"> -</div></li>
@@ -66,13 +60,13 @@ background-color: white;
           <li class="list-group-item"><strong>Between Pictures: </strong> <div id="BetweenPictures">- </div></li>
         </div>
         <div class="col-sm-6">
-          <li class="list-group-item"><strong>Total de Ciclos: </strong> <div id="TCiclos">- </div></li>
-          <li class="list-group-item"><strong>Duracion por Ciclo: </strong> <div id="DCiclo">- </div></li>
-          <li class="list-group-item"><strong>Camaras Conectadas: </strong> <div id="CamarasConectadas"> - </div></li>
+          <li class="list-group-item"><strong>Total Cycles: </strong> <div id="TCiclos">- </div></li>
+          <li class="list-group-item"><strong>Cycle Duration: </strong> <div id="DCiclo">- </div></li>
+          <li class="list-group-item"><strong>Connected Cameras: </strong> <div id="CamarasConectadas"> - </div></li>
           <li class="list-group-item"><strong>Performace Machine: </strong><div id="Performace"> - </div></li>
-          <li class="list-group-item"><strong>Resultado :</strong> <div id="">-  </div></li>
-          <li class="list-group-item"><strong>Recurso Utilizado: </strong> <div id="Recurso"> - </div></li>
-          <li class="list-group-item"><strong>Descripcion: </strong><div id="Descripcion"> - </div></li>
+          <li class="list-group-item"><strong>results :</strong> <div id="">-  </div></li>
+          <li class="list-group-item"><strong>Resource Used: </strong> <div id="Recurso"> - </div></li>
+          <li class="list-group-item"><strong>Description: </strong><div id="Descripcion"> - </div></li>
          
         </div>
       </div>
@@ -81,16 +75,17 @@ background-color: white;
   </div>
     </div>
 
-    <h4 align="center">Resumen Test</h4>
+    <h4 align="center">Summary Test</h4>
     <table class="table table-striped table-dark table-hover">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
                 
-                <th scope="col">Ciclo</th>
-                <th scope="col">Total Identificacion</th>
+                <th scope="col">Cycle</th>
+                <th scope="col">Total Identification</th>
                 <th scope="col">Frame Received</th>
                 <th scope="col">Before Processing</th>
+                <th scope="col">Difference</th>
                 <th scope="col">Face API Results</th>
                 
             </tr>
@@ -111,6 +106,7 @@ background-color: white;
                 <th scope="col">(Min)</th>
                 <th scope="col">(Max)</th>
                 <th scope="col">(Average)</th>
+
             </tr>
         </thead>
         <tbody id="contenido"style="background-color: lightslategrey;">

@@ -48,16 +48,16 @@ IdentificationService = "Edge"
 #
 BetweenPictures = 1
 #
-#CameraMode = "Simple" 
-CameraMode = "Multiple" 
+CameraMode = "Simple" 
+#CameraMode = "Multiple" 
 #CameraMode = "Polling" 
 #
 DateTest = str(datetime.datetime.now())
 NumerodeCiclos = 4
 DuracionTest = 600
-Descripcion = "(2) Videos alex Lebro,"
+Descripcion = "(1) Videos Lebrom "
 # El recurso debe ser tomado del Global vars
-Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/"
+Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/Lebron%20James.mp4"
 
 # Data Secundary
 Fecha = DateTest[0:10]
@@ -291,7 +291,7 @@ while CountTest <= NumerodeCiclos:
                 # ////////////////////////////////////////////////////////////
                 Timeline = ClientLine[0:19]
 
-                PosicionNamePerson = ClientLine.find("Name") + 6
+                PosicionNamePerson = ClientLine.find("Person") + 6
                 PosicionPersonId = ClientLine.find("PersonId")
                 PosicionGroupId  = ClientLine.find("GroupId") 
                 PosicionMatchProbability = ClientLine.find("MatchProbability") 
@@ -302,6 +302,7 @@ while CountTest <= NumerodeCiclos:
                 CorteMatchProbability = PosicionMatchProbability + 18
                 CorteLocalPersistedFaceId = ClientLine.find("LocalPersistedFaceId") + 22
                 Matchsincoma = CorteLocalPersistedFaceId - 25
+                
 
 
                 # ///////////////////////////////////////////////////////////
@@ -315,10 +316,12 @@ while CountTest <= NumerodeCiclos:
                 #input ()
                 # ///////////////////////////////////////////////////////////
                 NamePerson = ClientLine[PosicionNamePerson:PosicionPersonId]
-                PersonId = ClientLine[CortePersonId:PosicionGroupId]
-                GroupId = ClientLine[CorteGroupId:PosicionMatchProbability]
-                MatchProbability = ClientLine[CorteMatchProbability:Matchsincoma]
-                LocalPersistedFaceId = ClientLine[CorteLocalPersistedFaceId:-40]
+                
+                PersonId = -1
+                GroupId = -1
+                MatchProbability = -1
+                LocalPersistedFaceId = -1
+            
 
                   
                 print ("Name person:", NamePerson)
@@ -326,6 +329,7 @@ while CountTest <= NumerodeCiclos:
                 print ("GroupId    :", GroupId)
                 print ("MatchPro-2   :", MatchProbability)
                 print ("LocalPer   :", LocalPersistedFaceId)
+            
                 #input ()
                 
 
@@ -345,10 +349,12 @@ while CountTest <= NumerodeCiclos:
                 print ("File:              ", archivo)
                 print ("Time:              ", Timeline)
                 print ("Name:              ", NamePerson)
+
                 print ("PersonId:          ", PersonId)
                 print ("Match Probability: ", MatchProbability)
                 print ("GroupId:           ", GroupId)
                 print ("LocalPersistedId:  ", LocalPersistedFaceId)
+                
                 print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
                 #input ()
                 

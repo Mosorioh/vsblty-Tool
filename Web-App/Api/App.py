@@ -175,8 +175,61 @@ def ResumenCiclo(idtest):
 
 
 
+#//////////////////////////////////////////
+# Api Pais
+#//////////////////////////////////////////
+@app.route('/ResumenCiclo/<idtest>/1')
+def ResumenCiclo1(idtest):
+    # Connect to the database
+    connection = pymysql.connect(host='192.168.100.51',
+                                user='Qatest',
+                                password='Quito.2019',
+                                db='Log-identificacion',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT * FROM `CycleSummary` WHERE `IdTest` =%s AND `Ciclo` =%s "
+            cursor.execute(sql, (idtest, 1))
+            result = cursor.fetchall()
+            print(result)
+
+        return jsonify(result)
+    finally:
+        connection.close()
+
+
+
+
+#//////////////////////////////////////////
+# Api Pais
+#//////////////////////////////////////////
+@app.route('/selectcomparation/<Idmode>')
+def selectcomparation(Idmode):
+    # Connect to the database
+    connection = pymysql.connect(host='192.168.100.51',
+                                user='Qatest',
+                                password='Quito.2019',
+                                db='Log-identificacion',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT `Id`, `GUID`, `Version`, `CameraMode`, `IdentificationService`, `BetweenPictures`, `Hostname`, `Descripcion` FROM `Test` WHERE `CameraMode` =%s "
+            cursor.execute(sql, Idmode)
+            result = cursor.fetchall()
+            print(result)
+
+        return jsonify(result)
+    finally:
+        connection.close()
+
 
 
 if __name__ == '__main__':
-    #app.run(host='192.168.100.233', port=5010, debug=True)
+    #app.run(host='192.168.100.233', port=5080, debug=True)
     app.run(host='192.168.100.51', port=5080, debug=True)
