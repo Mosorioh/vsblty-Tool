@@ -52,8 +52,9 @@ Version = "4.20.327.2"
 #///////////////////////////////////////////
 # Get Identification Service
 #///////////////////////////////////////////
-#IdentificationService = "Cloud"
-IdentificationService = 1
+#   Cloud = 0
+#   Edge = 1
+IdentificationService = 0
 
 #///////////////////////////////////////////
 # Get Between Pictures
@@ -63,14 +64,14 @@ BetweenPictures = 1
 #///////////////////////////////////////////
 # Get Camera Mode
 #///////////////////////////////////////////
-#CameraMode = "Simple" 
-CameraMode = "Multiple" 
+CameraMode = "Simple" 
+#CameraMode = "Multiple" 
 #CameraMode = "Polling" 
 
 #///////////////////////////////////////////
 # Get Numero de Ciclos por cada Prueba
 #///////////////////////////////////////////
-NumerodeCiclos = 8
+NumerodeCiclos = 2
 
 #///////////////////////////////////////////
 # Duracion Por Prueba
@@ -80,7 +81,7 @@ DuracionTest = 120
 #///////////////////////////////////////////
 # Descripcion
 #///////////////////////////////////////////
-Descripcion = "Test From Setting.py"
+Descripcion = "(2) Alex y QA Video"
 
 #///////////////////////////////////////////
 # Variables con las Rutas constantes de Archivos
@@ -88,6 +89,8 @@ Descripcion = "Test From Setting.py"
 PathLogs = "C:/ProgramData/Vsblty/KingSalmon/"
 PathFolderBeforeProcessing = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/BeforeProcessingOpenVino/"
 PathFolderFrameReceived = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/FrameReceived/"
+PathFolderFrameLocalPhotos = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/LocalPhotos/"
+PathFolderFrameAfterIdentification = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/AfterIdentification/"
 
 #///////////////////////////////////////////
 # Parametros de Busqueda

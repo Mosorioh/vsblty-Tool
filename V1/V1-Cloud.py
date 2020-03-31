@@ -48,14 +48,14 @@ IdentificationService = "Edge"
 #
 BetweenPictures = 1
 #
-CameraMode = "Simple" 
-#CameraMode = "Multiple" 
+#CameraMode = "Simple" 
+CameraMode = "Multiple" 
 #CameraMode = "Polling" 
 #
 DateTest = str(datetime.datetime.now())
-NumerodeCiclos = 4
+NumerodeCiclos = 1
 DuracionTest = 600
-Descripcion = "(1) Videos Lebrom "
+Descripcion = "(2) Alex  QA Video Lebrom cloud"
 # El recurso debe ser tomado del Global vars
 Recurso = "http://181.199.66.129/vsblty/Recursos/Videos/Lebron%20James.mp4"
 
@@ -369,8 +369,8 @@ while CountTest <= NumerodeCiclos:
                     with connection.cursor() as cursor:
                 # Create a new record
                                         
-                        sql = "INSERT INTO `Identificacion` (`Item`, `File`, `Timeline`, `Name`, `PersonId`, `MatchProbability`, `GroupId`, `LocalPersistedId`, `TestID`, `CicloTest`, `StartCiclo`, `Hostname`, `GuidTest`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-                        cursor.execute(sql, (i, archivo, Timeline, NamePerson, PersonId, MatchProbability, GroupId, LocalPersistedFaceId, TestID, CountTest, StartTestCliente, Hostname, GuidTest))
+                        sql = "INSERT INTO `Identificacion` (`Item`, `File`, `Timeline`, `Name`, `PersonId`, `MatchProbability`, `GroupId`, `LocalPersistedId`, `TestID`, `CicloTest`, `Hostname`, `GuidTest`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                        cursor.execute(sql, (i, archivo, Timeline, NamePerson, PersonId, MatchProbability, GroupId, LocalPersistedFaceId, TestID, CountTest, Hostname, GuidTest))
                          
 
 

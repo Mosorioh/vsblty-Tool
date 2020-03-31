@@ -175,6 +175,14 @@ while CountTest <= NumerodeCiclos:
     from FrameSumary import BeforeProcessing
     TotalBeforeProcessing = BeforeProcessing (TestID, GuidTest, CountTest)
 
+    # Frame en BeforeProcessing
+    from FrameSumary import FrameLocalPhotos
+    TotalFrameLocalPhotos = FrameLocalPhotos (TestID, GuidTest, CountTest)
+    
+    # Frame en AfterIdentification
+    from FrameSumary import FrameAfterIdentification
+    TotalFrameAfterIdentification = FrameAfterIdentification (TestID, GuidTest, CountTest)
+
     print ("")
     print ("/////////////////////////////////////////////////////////")
     print ("Total Face Identificacion", TotalFaceIdentificacion)

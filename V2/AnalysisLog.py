@@ -67,7 +67,7 @@ def AnalysisLog (GuidTest, IdentificationService, today, TestID, CountTest, Host
                 from BusquedaIdentificacionCloud import Busquedacloudiden
                 # Call funcion BusquedaEdgeiden analizar linea por linea
                 # la funcion BusquedaEdgeiden retorna Item
-                Busquedacloudiden (parametro, ClientLine)
+                item = Busquedacloudiden (GuidTest, parametro, ClientLine, today, TestID, CountTest, item, file, Hostname)
                
             #/////////////////////////////////////
             # Para Edge
