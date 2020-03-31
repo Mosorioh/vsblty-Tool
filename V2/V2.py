@@ -196,7 +196,7 @@ while CountTest <= NumerodeCiclos:
     #///////////////////////////////////////
     CountTest +=1
     print("")
-    print("Ciclo", CountTest)
+    #print("Ciclo", CountTest)
     #///////////////////////////////////////
     # Fin de ciclo, 
     #///////////////////////////////////////
