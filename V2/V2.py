@@ -183,7 +183,7 @@ while CountTest <= NumerodeCiclos:
 
     from AddCycleSummary import addCycleSummary
     addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0])
-    input()
+    #input()
 
     #/////////////////////////////////////////////////////
     # Frame Summary 3.7
