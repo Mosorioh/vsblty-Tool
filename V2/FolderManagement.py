@@ -69,3 +69,30 @@ def CreateFolderCiclo (FolderTest, CountTest):
         print (" - Creating Folder of Result Ciclo-", CountTest)
     except FileExistsError:
         print (" - Folder Exists")
+
+    return NewFolderTest
+
+def MoverFolder (FolderCiclo):
+    #crear carpeta
+    try:
+        # change the destination path
+        PathLog = "C:/ProgramData/Vsblty/KingSalmon/"
+        dirs = os.listdir(PathLog)
+        for file in dirs:
+            Archivo = PathLog + file
+            print (" - Moviendo Archivo Log: ", Archivo)
+            shutil.move(Archivo, FolderCiclo)
+            time.sleep(1)
+    except FileExistsError:
+        print (" - Folder Exists")
+
+    try:
+        FolderSavephotos = "C:/ProgramData/VsbltyTmp/KingSalmon/"
+        print (" - Moviendo Folder SavePhotos: ", Archivo)
+        shutil.move(FolderSavephotos, FolderCiclo)
+        time.sleep(1)
+    except FileExistsError:
+        print (" - folder SavePhotos No Exists") 
+
+    
+    return Archivo

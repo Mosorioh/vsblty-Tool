@@ -53,7 +53,7 @@ Version = "4.20.327.2"
 # Get Identification Service
 #///////////////////////////////////////////
 #IdentificationService = "Cloud"
-IdentificationService = "Edge"
+IdentificationService = 1
 
 #///////////////////////////////////////////
 # Get Between Pictures
@@ -70,12 +70,12 @@ CameraMode = "Multiple"
 #///////////////////////////////////////////
 # Get Numero de Ciclos por cada Prueba
 #///////////////////////////////////////////
-NumerodeCiclos = 4
+NumerodeCiclos = 8
 
 #///////////////////////////////////////////
 # Duracion Por Prueba
 #///////////////////////////////////////////
-DuracionTest = 600
+DuracionTest = 120
 
 #///////////////////////////////////////////
 # Descripcion
@@ -85,7 +85,9 @@ Descripcion = "Test From Setting.py"
 #///////////////////////////////////////////
 # Variables con las Rutas constantes de Archivos
 #///////////////////////////////////////////
-PathLogs= "C:/ProgramData/Vsblty/KingSalmon/"
+PathLogs = "C:/ProgramData/Vsblty/KingSalmon/"
+PathFolderBeforeProcessing = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/BeforeProcessingOpenVino/"
+PathFolderFrameReceived = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/FrameReceived/"
 
 #///////////////////////////////////////////
 # Parametros de Busqueda

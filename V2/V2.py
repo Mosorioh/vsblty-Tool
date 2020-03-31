@@ -75,7 +75,7 @@ print ("Test Id: ", TestID)
 #/////////////////////////////////////////////////////////////////////////////////////
 from FolderManagement import RemoveFolderlog
 # call function RemoveFolderlog, para rever carpeta
-#RemoveFolderlog ()
+RemoveFolderlog ()
 
 from FolderManagement import CreateFolderBackup
 # Call Funtion CreateFolderBackup
@@ -117,7 +117,7 @@ while CountTest <= NumerodeCiclos:
     # Crear carpeta respaldo por cada Ciclo definido, detro de la carpeta del Test 
     from FolderManagement import CreateFolderCiclo
     # Call Funtion CreateFolderCiclo
-    CreateFolderCiclo (FolderTest, CountTest)
+    FolderCiclo = CreateFolderCiclo (FolderTest, CountTest)
 
     #////////////////////////////////////////
     # Start Client (3.2)
@@ -154,11 +154,63 @@ while CountTest <= NumerodeCiclos:
     time.sleep(1)
 
     #///////////////////////////////////////
-    # Analis de Log  (3.5)
+    # Analisis de Log  (3.5)
     #///////////////////////////////////////
-    # 
+    from AnalysisLog import AnalysisLog
+    AnalysisLog (GuidTest, IdentificationService, today, TestID, CountTest, Hostname)
+
+    #/////////////////////////////////////////////////////
+    # Frame Summary 3.6 
+    # Frame en FrameReceived
+    # Frame en BeforeProcessing
+    #/////////////////////////////////////////////////////
+    
+    # Frame en FrameReceived
+    from FrameSumary import FrameReceived
+    FrameReceived (TestID, GuidTest, CountTest)
+
+    # Frame en BeforeProcessing
+    from FrameSumary import BeforeProcessing
+    BeforeProcessing (TestID, GuidTest, CountTest)
+
+    #/////////////////////////////////////////////////////
+    # Frame Summary 3.7
+    # Respaldar Archivo 
+    #/////////////////////////////////////////////////////
+    print ("")
+    print ("*****************************************************************")
+    print ("/////////////////////////////////////////////////////////////////////////////////")
+    print (" - Respaldar Archivos generados en el ciclo de prueba-", CountTest)
+    print ("/////////////////////////////////////////////////////////////////////////////////")
+    print ("*****************************************************************")
+    print ("------ Mover Process LOG -----")    
+    print ("/////////////////////////////////////////////////////////////////////////////////")
+    # Mover Carpeta
+    from FolderManagement import MoverFolder
+    MoverFolder (FolderCiclo)
+    print ("/////////////////////////////////////////////////////////////////////////////////")
 
 
+    #///////////////////////////////////////
+    # Ciclo + 1
+    #///////////////////////////////////////
+    CountTest +=1
+    print("")
+    print("Ciclo", CountTest)
+    #///////////////////////////////////////
+    # Fin de ciclo, 
+    #///////////////////////////////////////
+    print ("")
+    print ("///////////////////////////////////////////////////////////////////////////////")
+    print (" - Sleep de 5 Segundo")
+    print ("///////////////////////////////////////////////////////////////////////////////")
+    time.sleep(5)
 
+
+print ("*****************************************************************")
+print ("*****************************************************************")
+print ("End Task Ciclos") 
+print ("*****************************************************************")
+print ("*****************************************************************")
 input()
 
