@@ -157,7 +157,9 @@ while CountTest <= NumerodeCiclos:
     # Analisis de Log  (3.5)
     #///////////////////////////////////////
     from AnalysisLog import AnalysisLog
-    AnalysisLog (GuidTest, IdentificationService, today, TestID, CountTest, Hostname)
+    TotalFaceIdentificacion = AnalysisLog (GuidTest, IdentificationService, today, TestID, CountTest, Hostname)
+
+
 
     #/////////////////////////////////////////////////////
     # Frame Summary 3.6 
@@ -167,11 +169,21 @@ while CountTest <= NumerodeCiclos:
     
     # Frame en FrameReceived
     from FrameSumary import FrameReceived
-    FrameReceived (TestID, GuidTest, CountTest)
+    TotalFrameReceived = FrameReceived (TestID, GuidTest, CountTest)
 
     # Frame en BeforeProcessing
     from FrameSumary import BeforeProcessing
-    BeforeProcessing (TestID, GuidTest, CountTest)
+    TotalBeforeProcessing = BeforeProcessing (TestID, GuidTest, CountTest)
+
+    print ("")
+    print ("/////////////////////////////////////////////////////////")
+    print ("Total Face Identificacion", TotalFaceIdentificacion)
+    print ("Total Frame Received", TotalFrameReceived)
+    print ("Total Frame Before-Processing", TotalBeforeProcessing)
+
+    from AddCycleSummary import addCycleSummary
+    addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0])
+    input()
 
     #/////////////////////////////////////////////////////
     # Frame Summary 3.7

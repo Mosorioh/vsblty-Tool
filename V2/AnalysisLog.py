@@ -83,12 +83,5 @@ def AnalysisLog (GuidTest, IdentificationService, today, TestID, CountTest, Host
                 item = BusquedaEdgeiden (GuidTest, parametro, ClientLine, today, TestID, CountTest, item, file, Hostname)
                 
             
-
-  
-     
-
-    # ////////////////////////////////////////////////////////////
-    # Por cada Archivo dentro del directorio, se realiza un ciclo for para recorrer cada linea y verificar hits  
-    # ////////////////////////////////////////////////////////////
-    time.sleep(1)
+    return item 
 
