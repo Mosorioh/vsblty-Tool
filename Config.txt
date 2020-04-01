@@ -1,0 +1,9 @@
+python
+https://www.python.org/downloads/release/python-376/
+    Windows x86-64 executable installer
+    - check Add python 3.7 to path
+
+***********************************************
+liberias
+
+pip install PyMySQL

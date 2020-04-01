@@ -129,7 +129,8 @@ while CountTest <= NumerodeCiclos:
     #///////////////////////////////////////
     # El Cliente se incia llamando a un archivo .bat  
     #///////////////////////////////////////
-    os.startfile('C:\\Users/Mijail/Documents/VSBLTY-Identificacion-Log/Scripts-Extras/Start-Client.bat')
+    os.startfile('C:\\Users/Mijail/Documents/vsblty-Tool/Scripts-Extras/Start-Client.bat')
+    
     print ("***********")
     print ("  -- Client is Running, Analizando Frame and Person...")
     print ("***********")
@@ -232,5 +233,5 @@ print ("*****************************************************************")
 print ("End Task Ciclos") 
 print ("*****************************************************************")
 print ("*****************************************************************")
-input()
+
 

@@ -118,7 +118,7 @@ def FrameLocalPhotos (TestID, GuidTest, CountTest):
     from Setting import PathFolderFrameLocalPhotos
     PathOrigen = PathFolderFrameLocalPhotos
     dirs = os.listdir(PathOrigen)
-    #print (dirs)
+    print ("path LocalPhotos: ", PathOrigen)
 
     # List Camera
     from Cameras import Cameras
@@ -134,22 +134,24 @@ def FrameLocalPhotos (TestID, GuidTest, CountTest):
     FrameCam2 = Busqueda.count(Cam2)
     FrameCam3 = Busqueda.count(Cam3)
     FrameCam4 = Busqueda.count(Cam4)
-    total = FrameCam1 + FrameCam2 + FrameCam3 + FrameCam4
+    #total = FrameCam1 + FrameCam2 + FrameCam3 + FrameCam4
 
-    FrameLocalPhotos = [TotalFrameFolder, FrameCam1, FrameCam2, FrameCam3, FrameCam4, total]
+    # LocalPhotos no tiene ip de la camara
+    #FrameLocalPhotos = [TotalFrameFolder, FrameCam1, FrameCam2, FrameCam3, FrameCam4, total]
+    FrameLocalPhotos = TotalFrameFolder
 
 
-    print ("---- Elementos en Folder (Frame BeforeProcessing)")
+    print ("---- Elementos en Folder (Frame FrameLocalPhotos)")
     print ("Path: ", PathOrigen)
     print ("Total Frame en Carpeta", TotalFrameFolder)
     print ("Elementos Cam1: ", FrameCam1)
     print ("Elementos Cam2: ", FrameCam2)
     print ("Elementos Cam3: ", FrameCam3)
     print ("Elementos Cam4: ", FrameCam4)
-    print ("Total: ", total)
+    print ("Total: ", FrameLocalPhotos)
 
     from AddFrameSummary import AddFrameSummary
-    AddFrameSummary (TestID, GuidTest, CountTest, Folder, FrameCam1, FrameCam2, FrameCam3, FrameCam4, total)
+    AddFrameSummary (TestID, GuidTest, CountTest, Folder, FrameCam1, FrameCam2, FrameCam3, FrameCam4, FrameLocalPhotos)
 
     return FrameLocalPhotos
 
@@ -181,7 +183,7 @@ def FrameAfterIdentification (TestID, GuidTest, CountTest):
     FrameAfterIdentification = [TotalFrameFolder, FrameCam1, FrameCam2, FrameCam3, FrameCam4, total]
 
 
-    print ("---- Elementos en Folder (Frame BeforeProcessing)")
+    print ("---- Elementos en Folder (Frame FrameAfterIdentification)")
     print ("Path: ", PathOrigen)
     print ("Total Frame en Carpeta", TotalFrameFolder)
     print ("Elementos Cam1: ", FrameCam1)
