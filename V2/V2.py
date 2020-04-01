@@ -142,6 +142,9 @@ while CountTest <= NumerodeCiclos:
     # Cliente esta en ejecucion, Ejemplo Ram y Cpu
     #///////////////////////////////////////
 
+    #///////////////////////////////////////
+    # Take PERFORMANCE DATA
+    #///////////////////////////////////////
     SleepTest = 0
     while (SleepTest < DuracionTest):
         time.sleep(29)
@@ -155,8 +158,6 @@ while CountTest <= NumerodeCiclos:
         #
         SleepTest = SleepTest + 30
     
-    
-
     #///////////////////////////////////////
     # Close Client  (3.4)
     #///////////////////////////////////////
@@ -170,10 +171,15 @@ while CountTest <= NumerodeCiclos:
     #///////////////////////////////////////
     # Analisis de Log  (3.5)
     #///////////////////////////////////////
+    
+    # Identificaciones
     from AnalysisLog import AnalysisLog
     TotalFaceIdentificacion = AnalysisLog (GuidTest, IdentificationService, today, TestID, CountTest, Hostname)
-
-
+    
+    # Errores
+    print ("///// LogError ///////")
+    from AnalysisLogError import AnalysisLogError
+    TotalError = AnalysisLogError (TestID, GuidTest, CountTest, Hostname, Version)
 
     #/////////////////////////////////////////////////////
     # Frame Summary 3.6 
@@ -203,8 +209,15 @@ while CountTest <= NumerodeCiclos:
     print ("Total Frame Received", TotalFrameReceived)
     print ("Total Frame Before-Processing", TotalBeforeProcessing)
 
+    # get Ave de CPU y Ram
+    from GetAverage import AveragePerformance
+    Average = AveragePerformance (TestID)
+    CpuAvg = Average[0]
+    RamAvg = Average[1]
+
+    # Insertar resultados tptales CycleSummary DB
     from AddCycleSummary import addCycleSummary
-    addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0])
+    addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0], TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification[0], CpuAvg, RamAvg)
     #input()
 
     #/////////////////////////////////////////////////////

@@ -1,6 +1,5 @@
 # DB
 import pymysql
-import datetime 
 
 # //////////////////////////////////////
 # Conexion
@@ -8,9 +7,7 @@ import datetime
 from Conexion import Conexion
 
 
-def AddPerformance (TestID, GuidTest, CountTest, PID, Cpu, Ram):
-    if (Cpu > 100):
-        Cpu = 100
+def AddLogError (TestID, GuidTest, CountTest, Hostname, Version, file, Timeline, LineaLog, InfoLogerror):
     # Connect to the database
     connection = pymysql.connect(host=Conexion[0],
                             user=Conexion[1],
@@ -23,16 +20,14 @@ def AddPerformance (TestID, GuidTest, CountTest, PID, Cpu, Ram):
         with connection.cursor() as cursor:
         # Create a new record
                          
-            sql = "INSERT INTO `Performance` (`Idtest`, `GuidTest`, `Ciclo`, `PID`, `Cpu`, `Ram`) VALUES ( %s, %s, %s, %s, %s, %s)"
-            cursor.execute(sql, (TestID, GuidTest, CountTest, PID, Cpu, Ram))
+            sql = "INSERT INTO `ErrorSummary` (`IdTest`, `Guid`, `Ciclo`, `Hostname`, `Version`,  `File`, `TimeLine`, `LineLogError`, `InfoLog`) VALUES ( %s, %s,%s, %s, %s, %s, %s, %s, %s)"
+            cursor.execute(sql, (TestID, GuidTest, CountTest, Hostname, Version, file, Timeline, LineaLog, InfoLogerror))
                         
             
             # connection is not autocommit by default. So you must commit to save
             # your changes.
             connection.commit()
-            from Setting import today
-            print ("Performance Data Taken in: ", datetime.datetime.now())
+            print ("Registro del Error Fue Insertado corectamente")
 
     finally:
         connection.close()
-

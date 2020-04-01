@@ -81,7 +81,7 @@ DuracionTest = 600
 #///////////////////////////////////////////
 # Descripcion
 #///////////////////////////////////////////
-Descripcion = "(1) Alex Video"
+Descripcion = "(1) Mexico-1 Video"
 
 #///////////////////////////////////////////
 # Variables con las Rutas constantes de Archivos
@@ -97,8 +97,9 @@ PathFolderFrameAfterIdentification = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPh
 #///////////////////////////////////////////
 BusquedaLogIdentCloud = "[CLOUD Detection][FaceAnalysis] Identified Person"
 BusquedaLogIdentEdge = "[EDGE Detection] Identified Person >> Name:"
+BusquedaLogError = "ERROR"
 
-ParametroBusqueda = [BusquedaLogIdentCloud, BusquedaLogIdentEdge]
+ParametroBusqueda = [BusquedaLogIdentCloud, BusquedaLogIdentEdge, BusquedaLogError]
 
 
 
