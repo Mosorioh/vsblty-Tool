@@ -140,9 +140,22 @@ while CountTest <= NumerodeCiclos:
     #
     # En este punto se debe ingresar todas las funciones referente a pruebas mientras el
     # Cliente esta en ejecucion, Ejemplo Ram y Cpu
-    #
+    #///////////////////////////////////////
 
-    time.sleep(DuracionTest)
+    SleepTest = 0
+    while (SleepTest < DuracionTest):
+        time.sleep(29)
+        from Performance import GetProcessID, GetValueCpu, GetValueRam
+        PID = GetProcessID()
+        Cpu = GetValueCpu(PID)
+        Ram = GetValueRam(PID)
+        #
+        from AddPerformance import AddPerformance
+        AddPerformance (TestID, GuidTest, CountTest, PID, Cpu, Ram)
+        #
+        SleepTest = SleepTest + 30
+    
+    
 
     #///////////////////////////////////////
     # Close Client  (3.4)

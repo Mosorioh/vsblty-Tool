@@ -22,11 +22,11 @@ def GetProcessID ():
 #//////////////////////////////////////////////////////////////
 # Process CPU
 # ////////////////////////////////////////////////////////////
-def getValueCpu (PID):
+def GetValueCpu (PID):
     
     p = psutil.Process(PID)
     p_cpu = p.cpu_percent(interval=1)/10
-    CpuValue = (p_cpu * 1.9)
+    CpuValue = (p_cpu * 2.5)
     CPU = int(CpuValue)
     return CPU
 
