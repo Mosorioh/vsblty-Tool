@@ -26,7 +26,7 @@ def GetValueCpu (PID):
     
     p = psutil.Process(PID)
     p_cpu = p.cpu_percent(interval=1)/10
-    CpuValue = (p_cpu * 2.5)
+    CpuValue = (p_cpu * 3) # 3.5 fue una prueba mas exacta
     CPU = int(CpuValue)
     return CPU
 

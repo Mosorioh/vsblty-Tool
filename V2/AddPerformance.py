@@ -9,6 +9,8 @@ from Conexion import Conexion
 
 
 def AddPerformance (TestID, GuidTest, CountTest, PID, Cpu, Ram):
+    if (Cpu > 100):
+        Cpu = 100
     # Connect to the database
     connection = pymysql.connect(host=Conexion[0],
                             user=Conexion[1],
