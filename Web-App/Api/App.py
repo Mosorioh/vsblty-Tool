@@ -35,7 +35,7 @@ def select():
     try:
         with connection.cursor() as cursor:
             # Read a single record
-            sql = "SELECT `Id`, `GUID`, `Version`, `CameraMode`, `IdentificationService`, `BetweenPictures`, `Descripcion` FROM `Test`"
+            sql = "SELECT `Id`, `GUID`, `Version`, `CameraMode`, `IdentificationService`, `BetweenPictures`, `Descripcion` FROM `Test` ORDER BY `Id` DESC"
             cursor.execute(sql)
             result = cursor.fetchall()
             print(result)
@@ -200,7 +200,30 @@ def ResumenCiclo1(idtest):
     finally:
         connection.close()
 
+#//////////////////////////////////////////
+# Api Pais
+#//////////////////////////////////////////
+@app.route('/FrameSummary/<idtest>/1')
+def FrameSummary(idtest):
+    # Connect to the database
+    connection = pymysql.connect(host='192.168.100.51',
+                                user='Qatest',
+                                password='Quito.2019',
+                                db='Log-identificacion',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
 
+    try:
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT * FROM `FrameSummary` WHERE `IdTest` =%s AND `Ciclo` =%s "
+            cursor.execute(sql, (idtest, 1))
+            result = cursor.fetchall()
+            print(result)
+
+        return jsonify(result)
+    finally:
+        connection.close()
 
 
 #//////////////////////////////////////////

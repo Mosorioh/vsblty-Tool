@@ -43,7 +43,7 @@ background-color: white;
 
           </div>
     </form>
-
+<!-- 
     <div class="panel panel-default" style="background-color: rgb(255, 255, 255);">
       
       <button type="button" class="btn btn-info m-3 p-2" data-toggle="collapse" data-target="#demo">Test Detail</button>
@@ -74,7 +74,7 @@ background-color: white;
     </ul>
   </div>
     </div>
-
+-->
     <h4 align="center">Summary Test</h4>
     <table class="table table-striped table-dark table-hover">
         <thead class="thead-dark">
@@ -86,11 +86,37 @@ background-color: white;
                 <th scope="col">Frame Received</th>
                 <th scope="col">Before Processing</th>
                 <th scope="col">Difference</th>
-                <th scope="col">Face API Results</th>
+				<th scope="col">LocalPhotos</th>
+				<th scope="col">AfterIdentification</th>
+               <!-- <th scope="col">Face API Results</th> -->
+				<th scope="col">Cpu Avg</th>
+				<th scope="col">Ram Avg</th>
+				<th scope="col">TotalError</th>
                 
             </tr>
         </thead>
-        <tbody id="ResumenCiclo">
+        <tbody align="center" id="ResumenCiclo">
+            
+        </tbody>
+    </table>
+	
+	    <h4 align="center">Summary Frame</h4>
+    <table class="table table-striped table-dark table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cycle</th>
+                <th scope="col">Folder</th>
+                <th scope="col">Cam1</th>
+				<th scope="col">Cam2</th>
+				<th scope="col">Cam3</th>
+				<th scope="col">Cam4</th>
+				<th scope="col">Total</th>
+            
+                
+            </tr>
+        </thead>
+        <tbody align="center" id="FrameSummary">
             
         </tbody>
     </table>

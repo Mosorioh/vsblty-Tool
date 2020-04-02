@@ -54,13 +54,66 @@ $(document).ready(function(){
             <tr>
                     <th scope="row">${ n }</th>
                     
-                    <td>Ciclo - ${ dato.Ciclo }</td>
+                    <td>${ dato.Ciclo }</td>
                     <td>${ dato.TotalIdentificacion }</td>
                     <td>${ dato.TotalFrameReceived }</td>
                     <td>${ dato.TotalBeforeProcessing }</td>
                     <td>${ dato.TotalFrameReceived - dato.TotalBeforeProcessing }</td>
-                    <td>${ dato.TotalFaceAPIResults }</td>
+					<td>${ dato.LocalPhotos }</td>
+					<td>${ dato.AfterIdentification }</td>
+                    
+					<td>${ dato.CpuAve } %</td>
+					<td>${ dato.RamAve } MB</td>
+					<td>${ dato.TotalError }</td>
                 </tr>
+                
+            
+            `;
+			}
+			
+			})
+		})
+  })
+
+  
+// </script>
+
+
+//<!----- Script 3------>
+//<!-- get provincia Segun opcion seleccionada en el drowndoon-->
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://181.199.66.129:5080/FrameSummary/'+Testnumero+'/1')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen FrameSummary")   
+  console.log( datos)
+  
+    
+      
+  FrameSummary.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            FrameSummary.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.Folder }</td>
+                    <td>${ dato.Cam1 }</td>
+                    <td>${ dato.Cam2 }</td>
+                    <td>${ dato.Cam3 }</td>
+					<td>${ dato.Cam4 }</td>
+					<td>${ dato.CountFrame }</td>
+                    
+					
                 
             
             `;
