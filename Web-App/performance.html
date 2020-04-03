@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DQS COVID-19</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+
+
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      color: rgb(90, 90, 90);
+      background-image: url("Fondo.jpg");
+    }
+    
+    .bg {
+      /* The image used */
+      background-image: url("Fondo.jpg");
+    
+      /* Full height */
+      height: 100%; 
+    
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+#boxmain{
+  width: 100%;
+  height:320px;
+  margin-bottom: 3%;
+  background-color: white;
+}
+#boxsecon{
+  width: 100%;
+  height:260px;
+  margin-bottom: 3%;
+  background-color: white;
+}
+#chart_div{
+  width: 100%;
+  height:80%;
+  margin-bottom: 3%;
+  background-color: white;
+}
+#chart_3{
+  width: 100%;
+  height:80%;
+  margin-bottom: 3%;
+}
+#expuestas{
+  width: 46%;
+  height:70%;
+  margin-bottom: 3%;
+  background-color: rgb(83, 83, 83);
+  float: left;
+  text-align: center;
+  margin: 2%;
+  color: aliceblue;
+}
+#enriesgo{
+  width: 46%;
+  height:70%;
+  margin-bottom: 3%;
+  background-color:rgb(83, 83, 83);
+  float: right;
+  text-align: center;
+  margin: 2%;
+  color: aliceblue;
+}
+.counter{
+  text-align: center;
+  font-size: 4em;
+  color: darkred;
+}
+.counter2{
+  text-align: center;
+  font-size: 4em;
+  color: goldenrod;
+}
+.container{
+  text-align: center;
+  
+}  
+#personasobservacion {
+  color: darkgoldenrod;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+</style>
+    
+</head>
+<body>
+  <div class="bg">
+    <div class="container">
+      <div class="row" >
+        <div class="col-md-12 m-2" style="background-color:rgb(1, 76, 82); ">
+        
+<nav class="navbar navbar-inverse">
+  
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">COVID-19</a>
+    </div>
+    <ul class="nav navbar-nav">
+   
+      <li><a href="Ubicacion.html">Crear Ubicacion</a></li>
+      <li><a href="Registro.html">Nuevo registro</a></li>
+      <li><a href="#">Regresar</a></li>
+      
+    </ul>
+  </div>
+</nav>
+  
+</div>
+
+<!-- formulario-->
+
+<div class="row" >
+<form action="Charts.html" method="GET" onsubmit="return validar();">
+  <!-- 1-->
+  <div class="col-md-2" style="background-color:rgb(1, 76, 82); ">
+    <select class="form-control" name="Pais" id="selectPais"  ></select>
+  </div>
+    <!-- 2-->
+    <div class="col-md-2" style="background-color:rgb(1, 76, 82); ">
+      <select class="form-control" name="Provincia" id="Provincia"   >
+        <option selected="true" disabled="disabled">Region</option>
+      </select>
+    </div>
+      <!-- 3-->
+  <div class="col-md-2" style="background-color:rgb(1, 76, 82); ">
+    <select class="form-control" name="Ciudad" id="Ciudad"  >
+      <option selected="true" disabled="disabled">Ciudad</option>
+    </select>
+  </div>
+    <!-- 4-->
+    <div class="col-md-2" style="background-color:rgb(1, 76, 82); ">
+      <select class="form-control" name="Sector" id="Sector" >
+        <option selected="true" disabled="disabled">Sector</option>
+      </select>
+    </div>
+      <!-- 5-->
+  <div class="col-md-2" style="background-color:rgb(1, 76, 82); ">
+    <select class="form-control" name="Ubicacion" id="Ubicacion" >
+      <option selected="true" disabled="disabled">Ubicacion</option>
+     
+    </select>
+  </div>
+    <!-- 6-->
+    <div class="col-md-2 p-2" style="background-color:rgb(1, 76, 82); ">
+      <button type="submit" class="btn btn-warning ">Graficar</button>
+      
+    </div>
+</div>
+</form>
+       
+      <!-- Row-1 -->
+      <div class="row" >
+        
+        <div class="col-md-12" style="background-color:rgb(1, 76, 82); ">
+          <h4 class="nav nav-tabs"> </h4> 
+        <div id="boxmain">
+          <h4></h4>
+          <div id="chart" style="width:100%; height:100%;">
+          </div>
+        </div>
+      </div>
+	          <div class="col-md-12" style="background-color:rgb(1, 76, 82); ">
+          <h4 class="nav nav-tabs"> </h4> 
+        <div id="boxmain">
+          <h4></h4>
+          <div id="chart2" style="width:100%; height:100%;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Row-2 -->
+    <div class="row">
+      <!-- Columna-1 -->
+      <div class="col-md-6" style="background-color:rgb(1, 76, 82); ">
+        <div id="boxsecon">
+          <h4>Personas Expuestas en las ultimas 48 horas</h4>
+          <div id="expuestas">
+            <h3>Personas Expuestas</h3>
+            <h6>Personas que salieron de casa</h6>
+            <div class="counter">0</div>
+          </div>
+          <div id="enriesgo">
+            <h3>Personas en Riesgo</h3>
+            <h6 class="p5">Personas que viven con personas expuestas</h6>
+            <div class="counter2">0</div>
+          </div>
+          <div id="personasobservacion"></div>
+        </div>
+      </div>
+      <!-- Columna-2 -->
+      <div class="col-md-6" style="background-color:rgb(1, 76, 82); ">
+        <div id="boxsecon">
+          <h4>PORCENTAJE</h4>
+          <strong><p id="Datostotalpersonas">"Personas en Casa" vs "Total de personas Expuestas"</p></strong>
+          <div id="chart_div">       </div>
+        </div>
+      </div>
+    </div>
+    <!-- Row-3 -->
+    <div class="row">
+      <!-- Columna-1 -->
+      <div class="col-md-6" style="background-color:rgb(1, 76, 82); ">
+        <div id="boxsecon">
+          <h4>Motivo Principales de Salida</h4>
+          <div id="chart_div_motivo">
+        
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Columna-2 -->
+      
+      <div class="col-md-6" style="background-color:rgb(1, 76, 82); ">
+        <div id="boxsecon">
+          <h4>Ultimas 48 horas</h4>
+          
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
+
+<script type="text/javascript" src="js/Selects.js"></script>
+<script type="text/javascript" src="js/getvariable.js"></script>
+
+<!-- Grafico columnas -->
+<script>
+  // Visualization API with the 'corechart' package.
+  google.charts.load('visualization', { packages: ['corechart'] });
+  google.charts.setOnLoadCallback(drawLineChart);
+
+  function drawLineChart() {
+      $.ajax({
+          url: "http://192.168.100.156:5070/Indice/185",
+          dataType: "json",
+          type: "GET",
+          contentType: "application/json; charset=utf-8",
+          success: function (data) {
+              var arrSales = [['Time', 'Cpu']];    // Define an array and assign columns for the chart.
+
+              // Loop through each data and populate the array.
+              $.each(data, function (index, value) {
+                  arrSales.push([value.Time, value.Cpu]);
+              });
+
+              // Set chart Options.
+              var options = {
+                  title: '"Personas en Casa" VS "Personas Que Salieron"',
+                  curveType: 'function',
+                  legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 10} }  // You can position the legend on 'top' or at the 'bottom'.
+              };
+
+              // Create DataTable and add the array to it.
+              var figures = google.visualization.arrayToDataTable(arrSales)
+
+              // Define the chart type (LineChart - ColumnChart) and the container (a DIV in our case).
+              var chart = new google.visualization.LineChart(document.getElementById('chart'));
+              chart.draw(figures, options);      // Draw the chart with Options.
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+              alert('Got an Error');
+          }
+      });
+  }
+</script>
+
+
+
+<!-- Grafico columnas -->
+<script>
+  // Visualization API with the 'corechart' package.
+  google.charts.load('visualization', { packages: ['corechart'] });
+  google.charts.setOnLoadCallback(drawLineChart);
+
+  function drawLineChart() {
+      $.ajax({
+          url: "http://192.168.100.156:5070/Indice/185",
+          dataType: "json",
+          type: "GET",
+          contentType: "application/json; charset=utf-8",
+          success: function (data) {
+              var arrSales = [['Time', 'Ram']];    // Define an array and assign columns for the chart.
+
+              // Loop through each data and populate the array.
+              $.each(data, function (index, value) {
+                  arrSales.push([value.Time, value.Ram ]);
+              });
+
+              // Set chart Options.
+              var options = {
+                  title: '"Personas en Casa" VS "Personas Que Salieron"',
+                  curveType: 'function',
+                  legend: { position: 'bottom', textStyle: { color: '#000000', fontSize: 10}   },// You can position the legend on 'top' or at the 'bottom'.
+				  colors: ['#a52714', '#0000ff', '#ff0000', '#00ff00']
+				  
+              };
+
+              // Create DataTable and add the array to it.
+              var figures = google.visualization.arrayToDataTable(arrSales)
+
+              // Define the chart type (LineChart - ColumnChart) and the container (a DIV in our case).
+              var chart = new google.visualization.LineChart(document.getElementById('chart2'));
+              chart.draw(figures, options);      // Draw the chart with Options.
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+              alert('Got an Error');
+          }
+      });
+  }
+</script>
+
+
+
+</html>
+
+
+
+
+
