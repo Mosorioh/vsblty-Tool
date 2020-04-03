@@ -92,11 +92,14 @@ print ("Test Id: ", TestID)
 # - 
 # ***************
 #/////////////////////////////////////////////////////////////////////////////////////
-
+print ("")
+print ("*******************************************************************")
+print ("///////////////////////////////////////////////////////////////////")
 # Camera 1
 Camera1 = GetCameraList[0]
 from AddCameraTest import AddCameraTest
 AddCameraTest (TestID, GuidTest, Camera1)
+print (Camera1)
 IpCameras = [Camera1[4]]
 
 # Camera 2
@@ -126,8 +129,8 @@ try:
 except IndexError:
     print ("Camara 4 not is Setting") 
 
+print ("")
 print ("List IP Address: ", IpCameras)
-input ()
 
 #/////////////////////////////////////////////////////////////////////////////////////
 # ***************

@@ -72,6 +72,9 @@ BetweenPictures = TimeBetweenPictures
 # Get Camera Mode
 #///////////////////////////////////////////
 def CameraMode (PollingCamera, TotalCameraSetting):
+        print (PollingCamera)
+        print (TotalCameraSetting)
+        CameraMode = ""
         if (PollingCamera == "true"):              
                 CameraMode = "Polling"
         if (PollingCamera == "false" and TotalCameraSetting == 1):
@@ -90,7 +93,7 @@ NumerodeCiclos = 1
 #///////////////////////////////////////////
 # Duracion Por Prueba
 #///////////////////////////////////////////
-DuracionTest = 600
+DuracionTest = 120
 
 #///////////////////////////////////////////
 # Descripcion

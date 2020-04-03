@@ -33,9 +33,10 @@ def GetCameraList(PollingCamera):
         CameraList = str(decoded["CameraList"])
         TotalCamaras = CameraList.count("HardwareName")
         i = 0
-        print ("Cameras Configuradas: ", TotalCamaras)
+        print ("----- Cameras Configuradas: ", TotalCamaras)
         Cameras = []
         Countcamera = 0
+        
         while (i < TotalCamaras):
             
             Id = str(decoded["CameraList"][i]["Id"])
@@ -59,6 +60,8 @@ def GetCameraList(PollingCamera):
             i += 1
         
         TotalCamerasSetting = len(Cameras)
+        
+        CamerasList = []
 
         if (TotalCamerasSetting == 8):
             # camera 1
@@ -133,7 +136,7 @@ def GetCameraList(PollingCamera):
             Camera3 = [Cam3, IdCam3, HardwareNameCam3, CameraUseCam3, IpCameraAddressCam3, SnapshotUrlCam3, VideoUrlCam3, DescriptionCam3]
             # 
             CamerasList = [Camera1, Camera2, Camera3]    
-        if (TotalCamerasSetting == 24):
+        if (TotalCamerasSetting > 24):
             # camera 1
             Cam1 = Cameras[0]
             IdCam1 = Cameras[1]
