@@ -3,7 +3,7 @@
 //<!-- Get all paises -->
 //<script>
     //fetch('http://181.199.66.129:5010/pais')
-    fetch('http://181.199.66.129:5080/Test')
+    fetch('http://192.168.100.51:5080/Test')
     .then(ListTest=>ListTest.json())
     .then(ListTest=>{
       console.log("Test-----------")
@@ -36,7 +36,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5080/ResumenCiclo/'+Testnumero+'')
+   fetch('http://192.168.100.51:5080/ResumenCiclo/'+Testnumero+'')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -87,7 +87,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5080/FrameSummary/'+Testnumero+'/1')
+   fetch('http://192.168.100.51:5080/FrameSummary/'+Testnumero+'/1')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -139,7 +139,7 @@ $(document).ready(function(){
       var CicloSelectd=$(this).val()//obtenemos el valor seleccionado en una variable	
       console.log("Ciclo Seleccionado: " + CicloSelectd) 
 			
-   fetch('http://181.199.66.129:5080/Resultado/'+Testnumero+'/'+CicloSelectd+'')
+   fetch('http://192.168.100.51:5080/Resultado/'+Testnumero+'/'+CicloSelectd+'')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -185,7 +185,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5080/Testnumero/'+Testnumero+'/1')
+   fetch('http://192.168.100.51:5080/Testnumero/'+Testnumero+'/1')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -232,7 +232,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5080/Testnumero/'+Testnumero+'/2')
+   fetch('http://192.168.100.51:5080/Testnumero/'+Testnumero+'/2')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -277,7 +277,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5080/Testnumero/'+Testnumero+'/3')
+   fetch('http://192.168.100.51:5080/Testnumero/'+Testnumero+'/3')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -322,7 +322,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5080/Testnumero/'+Testnumero+'/4')
+   fetch('http://192.168.100.51:5080/Testnumero/'+Testnumero+'/4')
 
 	.then(datos=>datos.json())
 	.then(datos=>{

@@ -38,14 +38,19 @@ def FrameReceived (TestID, GuidTest, CountTest, IpCameras):
         Cam2 = IpCameras[1]
     except IndexError:
         print ("Camara 2 not is Setting") 
+        Cam2 = "CameraNull"
     try:
         Cam3 = IpCameras[2]
     except IndexError:
         print ("Camara 3 not is Setting") 
+        Cam3 = "CameraNull"
     try:
         Cam4 = IpCameras[3]
     except IndexError:
         print ("Camara 4 not is Setting") 
+        Cam4 = "CameraNull"
+
+    
 
     # Buscar 
     Busqueda = str(dirs)
@@ -92,14 +97,17 @@ def BeforeProcessing (TestID, GuidTest, CountTest, IpCameras):
         Cam2 = IpCameras[1]
     except IndexError:
         print ("Camara 2 not is Setting") 
+        Cam2 = "CameraNull"
     try:
         Cam3 = IpCameras[2]
     except IndexError:
         print ("Camara 3 not is Setting") 
+        Cam3 = "CameraNull"
     try:
         Cam4 = IpCameras[3]
     except IndexError:
         print ("Camara 4 not is Setting") 
+        Cam4 = "CameraNull"
 
 
     # Buscar 
@@ -143,14 +151,17 @@ def FrameLocalPhotos (TestID, GuidTest, CountTest, IpCameras):
         Cam2 = IpCameras[1]
     except IndexError:
         print ("Camara 2 not is Setting") 
+        Cam2 = "CameraNull"
     try:
         Cam3 = IpCameras[2]
     except IndexError:
         print ("Camara 3 not is Setting") 
+        Cam3 = "CameraNull"
     try:
         Cam4 = IpCameras[3]
     except IndexError:
         print ("Camara 4 not is Setting") 
+        Cam4 = "CameraNull"
 
 
     # Buscar 
@@ -196,14 +207,17 @@ def FrameAfterIdentification (TestID, GuidTest, CountTest, IpCameras):
         Cam2 = IpCameras[1]
     except IndexError:
         print ("Camara 2 not is Setting") 
+        Cam2 = "CameraNull"
     try:
         Cam3 = IpCameras[2]
     except IndexError:
         print ("Camara 3 not is Setting") 
+        Cam3 = "CameraNull"
     try:
         Cam4 = IpCameras[3]
     except IndexError:
         print ("Camara 4 not is Setting") 
+        Cam4 = "CameraNull"
 
     # Buscar 
     Busqueda = str(dirs)

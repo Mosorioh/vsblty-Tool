@@ -54,6 +54,7 @@ Version = "4.20.402.1"
 #///////////////////////////////////////////
 from GetGlobalVars import EdgeDetection
 EdgeDetection = EdgeDetection
+print (EdgeDetection)
 if (EdgeDetection == "true"):
         IdentificationService = 1
         #   Edge = 1
@@ -93,7 +94,7 @@ NumerodeCiclos = 1
 #///////////////////////////////////////////
 # Duracion Por Prueba
 #///////////////////////////////////////////
-DuracionTest = 120
+DuracionTest = 600
 
 #///////////////////////////////////////////
 # Descripcion
