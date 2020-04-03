@@ -23,7 +23,7 @@ import pymysql
 # FolderFrameReceived
 #//////////////////////////////////////
 
-def FrameReceived (TestID, GuidTest, CountTest):
+def FrameReceived (TestID, GuidTest, CountTest, IpCameras):
 
     Folder = "FrameReceived"
     # Ruta y elementos en la carpeta FrameReceived
@@ -33,11 +33,19 @@ def FrameReceived (TestID, GuidTest, CountTest):
     #print (dirs)
 
     # List Camera
-    from Cameras import Cameras
-    Cam1 = Cameras[0]
-    Cam2 = Cameras[2]
-    Cam3 = Cameras[4]
-    Cam4 = Cameras[6]
+    Cam1 = IpCameras[0]
+    try:
+        Cam2 = IpCameras[1]
+    except IndexError:
+        print ("Camara 2 not is Setting") 
+    try:
+        Cam3 = IpCameras[2]
+    except IndexError:
+        print ("Camara 3 not is Setting") 
+    try:
+        Cam4 = IpCameras[3]
+    except IndexError:
+        print ("Camara 4 not is Setting") 
 
     # Buscar 
     Busqueda = str(dirs)
@@ -69,7 +77,7 @@ def FrameReceived (TestID, GuidTest, CountTest):
 
     return FrameReceived
 
-def BeforeProcessing (TestID, GuidTest, CountTest):
+def BeforeProcessing (TestID, GuidTest, CountTest, IpCameras):
     
     Folder = "BeforeProcessing"
     # Ruta y elementos en la carpeta BeforeProcessing
@@ -79,11 +87,20 @@ def BeforeProcessing (TestID, GuidTest, CountTest):
     #print (dirs)
 
     # List Camera
-    from Cameras import Cameras
-    Cam1 = Cameras[0]
-    Cam2 = Cameras[2]
-    Cam3 = Cameras[4]
-    Cam4 = Cameras[6]
+    Cam1 = IpCameras[0]
+    try:
+        Cam2 = IpCameras[1]
+    except IndexError:
+        print ("Camara 2 not is Setting") 
+    try:
+        Cam3 = IpCameras[2]
+    except IndexError:
+        print ("Camara 3 not is Setting") 
+    try:
+        Cam4 = IpCameras[3]
+    except IndexError:
+        print ("Camara 4 not is Setting") 
+
 
     # Buscar 
     Busqueda = str(dirs)
@@ -111,7 +128,7 @@ def BeforeProcessing (TestID, GuidTest, CountTest):
 
     return FrameBeforeProcessing
 
-def FrameLocalPhotos (TestID, GuidTest, CountTest):
+def FrameLocalPhotos (TestID, GuidTest, CountTest, IpCameras):
     
     Folder = "LocalPhotos"
     # Ruta y elementos en la carpeta BeforeProcessing
@@ -121,11 +138,20 @@ def FrameLocalPhotos (TestID, GuidTest, CountTest):
     print ("path LocalPhotos: ", PathOrigen)
 
     # List Camera
-    from Cameras import Cameras
-    Cam1 = Cameras[0]
-    Cam2 = Cameras[2]
-    Cam3 = Cameras[4]
-    Cam4 = Cameras[6]
+    Cam1 = IpCameras[0]
+    try:
+        Cam2 = IpCameras[1]
+    except IndexError:
+        print ("Camara 2 not is Setting") 
+    try:
+        Cam3 = IpCameras[2]
+    except IndexError:
+        print ("Camara 3 not is Setting") 
+    try:
+        Cam4 = IpCameras[3]
+    except IndexError:
+        print ("Camara 4 not is Setting") 
+
 
     # Buscar 
     Busqueda = str(dirs)
@@ -155,7 +181,7 @@ def FrameLocalPhotos (TestID, GuidTest, CountTest):
 
     return FrameLocalPhotos
 
-def FrameAfterIdentification (TestID, GuidTest, CountTest):
+def FrameAfterIdentification (TestID, GuidTest, CountTest, IpCameras):
     
     Folder = "AfterIdentification"
     # Ruta y elementos en la carpeta BeforeProcessing
@@ -165,11 +191,19 @@ def FrameAfterIdentification (TestID, GuidTest, CountTest):
     #print (dirs)
 
     # List Camera
-    from Cameras import Cameras
-    Cam1 = Cameras[0]
-    Cam2 = Cameras[2]
-    Cam3 = Cameras[4]
-    Cam4 = Cameras[6]
+    Cam1 = IpCameras[0]
+    try:
+        Cam2 = IpCameras[1]
+    except IndexError:
+        print ("Camara 2 not is Setting") 
+    try:
+        Cam3 = IpCameras[2]
+    except IndexError:
+        print ("Camara 3 not is Setting") 
+    try:
+        Cam4 = IpCameras[3]
+    except IndexError:
+        print ("Camara 4 not is Setting") 
 
     # Buscar 
     Busqueda = str(dirs)

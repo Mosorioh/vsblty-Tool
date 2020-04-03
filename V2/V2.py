@@ -39,10 +39,26 @@ Descripcion = Setting[9]
 Recurso = 2
   
 # //////////////////////////////////////
+# Global vars
+#///////////////////////////////////////
+from GetGlobalVars import PollingCamera
+PollingCamera = PollingCamera
+print (PollingCamera)
+
+# //////////////////////////////////////
 # Camaras datail
 #///////////////////////////////////////
-from Cameras import Cameras
-print ("Cameras", Cameras) 
+from GetCamera import GetCameraList
+GetCameraList = GetCameraList(PollingCamera)
+TotalCameraSetting = len(GetCameraList)
+
+# //////////////////////////////////////
+# Camera Mode
+#///////////////////////////////////////
+from Setting import CameraMode
+CameraMode = CameraMode (PollingCamera, TotalCameraSetting)
+print ("Camera Mode: ", CameraMode)
+
 
 #/////////////////////////////////////////////////////////////////////////////////////
 # ***************
@@ -56,7 +72,7 @@ print ("Cameras", Cameras)
 #///////////////////////////////////////
 from addtest import addtest
 # call function addtest
-addtest (today, GuidTest, Hostname, NumerodeCiclos, DuracionTest, Descripcion, Recurso, Version, IdentificationService, BetweenPictures, CameraMode)
+addtest (today, GuidTest, Hostname, NumerodeCiclos, DuracionTest, Descripcion, Version, IdentificationService, BetweenPictures, CameraMode, TotalCameraSetting)
 
 # //////////////////////////////////////
 # Get Test-Id Creado segun el GUID
@@ -64,7 +80,54 @@ addtest (today, GuidTest, Hostname, NumerodeCiclos, DuracionTest, Descripcion, R
 from GetTestId import GetTestId
 # call function GetTestId
 TestID = GetTestId (GuidTest)
+print ("Identificacion: ", IdentificationService)
 print ("Test Id: ", TestID)
+
+
+
+#/////////////////////////////////////////////////////////////////////////////////////
+# ***************
+# Proceso (1.2) 
+# - Guardar Camaras Configuradas
+# - 
+# ***************
+#/////////////////////////////////////////////////////////////////////////////////////
+
+# Camera 1
+Camera1 = GetCameraList[0]
+from AddCameraTest import AddCameraTest
+AddCameraTest (TestID, GuidTest, Camera1)
+IpCameras = [Camera1[4]]
+
+# Camera 2
+try:
+    Camera2 = GetCameraList[1]
+    AddCameraTest (TestID, GuidTest, Camera2)
+    IpCameras.append (Camera2[4])
+    print (Camera2)
+except IndexError:
+    print ("Camara 2 not is Setting") 
+
+# Camera 3
+try:
+    Camera3 = GetCameraList[2]
+    AddCameraTest (TestID, GuidTest, Camera3)
+    IpCameras.append (Camera3[4])
+    print (Camera3)
+except IndexError:
+    print ("Camara 3 not is Setting")
+
+# Camera 4
+try:
+    Camera4 = GetCameraList[3]
+    AddCameraTest (TestID, GuidTest, Camera4)
+    IpCameras.append (Camera4[4])
+    print (Camera4)
+except IndexError:
+    print ("Camara 4 not is Setting") 
+
+print ("List IP Address: ", IpCameras)
+input ()
 
 #/////////////////////////////////////////////////////////////////////////////////////
 # ***************
@@ -189,19 +252,19 @@ while CountTest <= NumerodeCiclos:
     
     # Frame en FrameReceived
     from FrameSumary import FrameReceived
-    TotalFrameReceived = FrameReceived (TestID, GuidTest, CountTest)
+    TotalFrameReceived = FrameReceived (TestID, GuidTest, CountTest, IpCameras)
 
     # Frame en BeforeProcessing
     from FrameSumary import BeforeProcessing
-    TotalBeforeProcessing = BeforeProcessing (TestID, GuidTest, CountTest)
+    TotalBeforeProcessing = BeforeProcessing (TestID, GuidTest, CountTest, IpCameras)
 
     # Frame en BeforeProcessing
     from FrameSumary import FrameLocalPhotos
-    TotalFrameLocalPhotos = FrameLocalPhotos (TestID, GuidTest, CountTest)
+    TotalFrameLocalPhotos = FrameLocalPhotos (TestID, GuidTest, CountTest, IpCameras)
     
     # Frame en AfterIdentification
     from FrameSumary import FrameAfterIdentification
-    TotalFrameAfterIdentification = FrameAfterIdentification (TestID, GuidTest, CountTest)
+    TotalFrameAfterIdentification = FrameAfterIdentification (TestID, GuidTest, CountTest, IpCameras)
 
     print ("")
     print ("/////////////////////////////////////////////////////////")

@@ -52,21 +52,35 @@ Version = "4.20.402.1"
 #///////////////////////////////////////////
 # Get Identification Service
 #///////////////////////////////////////////
-#   Cloud = 0
-#   Edge = 1
-IdentificationService = 1
+from GetGlobalVars import EdgeDetection
+EdgeDetection = EdgeDetection
+if (EdgeDetection == "true"):
+        IdentificationService = 1
+        #   Edge = 1
+if (EdgeDetection == "false"):
+        IdentificationService = 0
+        #   Cloud = 0
+
 
 #///////////////////////////////////////////
 # Get Between Pictures
 #///////////////////////////////////////////
-BetweenPictures = 1
+from GetGlobalVars import TimeBetweenPictures
+BetweenPictures = TimeBetweenPictures
 
 #///////////////////////////////////////////
 # Get Camera Mode
 #///////////////////////////////////////////
-CameraMode = "Simple" 
-#CameraMode = "Multiple" 
-#CameraMode = "Polling" 
+def CameraMode (PollingCamera, TotalCameraSetting):
+        if (PollingCamera == "true"):              
+                CameraMode = "Polling"
+        if (PollingCamera == "false" and TotalCameraSetting == 1):
+                CameraMode = "Simple" 
+        if (PollingCamera == "false" and  TotalCameraSetting > 1):
+                CameraMode = "Multiple" 
+
+        return CameraMode
+
 
 #///////////////////////////////////////////
 # Get Numero de Ciclos por cada Prueba
@@ -100,8 +114,6 @@ BusquedaLogIdentEdge = "[EDGE Detection] Identified Person >> Name:"
 BusquedaLogError = "ERROR"
 
 ParametroBusqueda = [BusquedaLogIdentCloud, BusquedaLogIdentEdge, BusquedaLogError]
-
-
 
 
 Setting = [
