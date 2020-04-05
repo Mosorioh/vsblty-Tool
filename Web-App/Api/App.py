@@ -35,7 +35,7 @@ def select():
     try:
         with connection.cursor() as cursor:
             # Read a single record
-            sql = "SELECT `Id`, `GUID`, `Version`, `CameraMode`, `IdentificationService`, `BetweenPictures`, `Descripcion` FROM `Test` ORDER BY `Id` DESC"
+            sql = "SELECT `Id`, `GUID`, `VersionClient`, `CameraMode`, `iServices`, `BetweenPictures`, `Descripcion` FROM `Test` ORDER BY `Id` DESC"
             cursor.execute(sql)
             result = cursor.fetchall()
             print(result)
@@ -203,8 +203,8 @@ def ResumenCiclo1(idtest):
 #//////////////////////////////////////////
 # Api Pais
 #//////////////////////////////////////////
-@app.route('/FrameSummary/<idtest>/1')
-def FrameSummary(idtest):
+@app.route('/FrameSummary/<idtest>/<idciclo>')
+def FrameSummary(idtest, idciclo):
     # Connect to the database
     connection = pymysql.connect(host='192.168.100.51',
                                 user='Qatest',
@@ -217,7 +217,7 @@ def FrameSummary(idtest):
         with connection.cursor() as cursor:
             # Read a single record
             sql = "SELECT * FROM `FrameSummary` WHERE `IdTest` =%s AND `Ciclo` =%s "
-            cursor.execute(sql, (idtest, 1))
+            cursor.execute(sql, (idtest, idciclo))
             result = cursor.fetchall()
             print(result)
 
@@ -244,6 +244,32 @@ def selectcomparation(Idmode):
             # Read a single record
             sql = "SELECT `Id`, `GUID`, `Version`, `CameraMode`, `IdentificationService`, `BetweenPictures`, `Hostname`, `Descripcion` FROM `Test` WHERE `CameraMode` =%s "
             cursor.execute(sql, Idmode)
+            result = cursor.fetchall()
+            print(result)
+
+        return jsonify(result)
+    finally:
+        connection.close()
+
+
+#//////////////////////////////////////////
+# Api CAmera
+#//////////////////////////////////////////
+@app.route('/CameraSummary/<idtest>')
+def CameraSummary(idtest):
+    # Connect to the database
+    connection = pymysql.connect(host='192.168.100.51',
+                                user='Qatest',
+                                password='Quito.2019',
+                                db='Log-identificacion',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT * FROM `CameraSummary` WHERE `TestID` =%s"
+            cursor.execute(sql, (idtest))
             result = cursor.fetchall()
             print(result)
 

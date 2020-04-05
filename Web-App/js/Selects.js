@@ -17,7 +17,7 @@
         for(let dato of ListTest){
             n++;
             resultado.innerHTML += `
-            <option value="${dato.Id}"> (${dato.Id}) - ${dato.GUID} - ${dato.CameraMode} Camera - ${dato.Hostname} - ${dato.Descripcion}</option>
+            <option value="${dato.Id}"> (${dato.Id}) - ${dato.GUID} - ${dato.CameraMode} Camera - ${dato.iServices} </option>
             
             `;
            
@@ -29,8 +29,9 @@
 
 
 //<!----- Script 3------>
-//<!-- get provincia Segun opcion seleccionada en el drowndoon-->
+//<!-- Resumen ciclo 1-->
 //<script>	  
+
 $(document).ready(function(){
   $("#Test").on("change",function(){						
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
@@ -59,12 +60,15 @@ $(document).ready(function(){
                     <td>${ dato.TotalFrameReceived }</td>
                     <td>${ dato.TotalBeforeProcessing }</td>
                     <td>${ dato.TotalFrameReceived - dato.TotalBeforeProcessing }</td>
-					<td>${ dato.LocalPhotos }</td>
-					<td>${ dato.AfterIdentification }</td>
-                    
-					<td>${ dato.CpuAve } %</td>
-					<td>${ dato.RamAve } MB</td>
-					<td>${ dato.TotalError }</td>
+                    <td>${ dato.LocalPhotos }</td>
+                    <td>${ dato.AfterIdentification }</td>
+                              
+                    <td>${ dato.CpuAve } %</td>
+                    <td>${ dato.RamAve } MB</td>
+                    <td>${ dato.TotalError }</td>
+                    <td>${ dato.TotalFileMetrics }</td>
+                    <td>${ dato.TotalFileMetricsIdentification }</td>
+                    <td>${ dato.TotalFIleSinPersonEngagements }</td>
                 </tr>
                 
             
@@ -80,7 +84,7 @@ $(document).ready(function(){
 
 
 //<!----- Script 3------>
-//<!-- get provincia Segun opcion seleccionada en el drowndoon-->
+//<!-- Frame sumari
 //<script>	  
 $(document).ready(function(){
   $("#Test").on("change",function(){						
@@ -91,7 +95,7 @@ $(document).ready(function(){
 
 	.then(datos=>datos.json())
 	.then(datos=>{
-  console.log("Resultado resumen FrameSummary")   
+  console.log("Resultado resumen FrameSummary 2")   
   console.log( datos)
   
     
@@ -125,6 +129,160 @@ $(document).ready(function(){
 
   
 // </script>
+
+
+
+
+
+//<!----- Script 3------>
+//<!-- Frame sumari
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://192.168.100.51:5080/FrameSummary/'+Testnumero+'/2')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen FrameSummary 2")   
+  console.log( datos)
+  
+    
+      
+  FrameSummary2.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            FrameSummary2.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.Folder }</td>
+                    <td>${ dato.Cam1 }</td>
+                    <td>${ dato.Cam2 }</td>
+                    <td>${ dato.Cam3 }</td>
+					<td>${ dato.Cam4 }</td>
+					<td>${ dato.CountFrame }</td>
+                    
+					
+                
+            
+            `;
+			}
+			
+			})
+		})
+  })
+
+  
+// </script>
+
+
+
+//<!----- Script 3------>
+//<!-- Frame sumari
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://192.168.100.51:5080/FrameSummary/'+Testnumero+'/3')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen FrameSummary 3")   
+  console.log( datos)
+  
+    
+      
+  FrameSummary3.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            FrameSummary3.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.Folder }</td>
+                    <td>${ dato.Cam1 }</td>
+                    <td>${ dato.Cam2 }</td>
+                    <td>${ dato.Cam3 }</td>
+					<td>${ dato.Cam4 }</td>
+					<td>${ dato.CountFrame }</td>
+                    
+					
+                
+            
+            `;
+			}
+			
+			})
+		})
+  })
+
+  
+// </script>
+
+
+
+//<!----- Script 3------>
+//<!-- Frame sumari
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://192.168.100.51:5080/FrameSummary/'+Testnumero+'/4')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen FrameSummary 4")   
+  console.log( datos)
+  
+    
+      
+  FrameSummary4.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            FrameSummary4.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.Folder }</td>
+                    <td>${ dato.Cam1 }</td>
+                    <td>${ dato.Cam2 }</td>
+                    <td>${ dato.Cam3 }</td>
+					<td>${ dato.Cam4 }</td>
+					<td>${ dato.CountFrame }</td>
+                    
+					
+                
+            
+            `;
+			}
+			
+			})
+		})
+  })
+
+  
+// </script>
+
+
+
+
+
 
 //<!----- Script 3------>
 //<!-- get provincia Segun opcion seleccionada en el drowndoon-->
@@ -368,7 +526,7 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://181.199.66.129:5010/DetailTest/'+Testnumero)
+   fetch('http://181.199.66.129:5080/DetailTest/'+Testnumero)
 
 	.then(datos=>datos.json())
 	.then(datos=>{
@@ -383,8 +541,9 @@ $(document).ready(function(){
   TCiclos.innerHTML = '';
   DCiclo.innerHTML = '';
   Descripcion.innerHTML = '';
-  Recurso.innerHTML = '';
-  Version.innerHTML = '';    
+  FaceAnalysisOptimization.innerHTML = '';
+  Version.innerHTML = '';  
+  Version2.innerHTML = '';   
   CameraMode.innerHTML = ''; 
   IdentificationService.innerHTML = ''; 
   BetweenPictures.innerHTML = ''; 
@@ -393,15 +552,16 @@ $(document).ready(function(){
   Fecha.innerHTML += `${ datos[0].Fecha }`;
   TestNumero.innerHTML += `${ datos[0].GUID }`;
   HostName.innerHTML += `${ datos[0].Hostname }`;
-  Version.innerHTML += `${ datos[0].Version }`;
-  IdentificationService.innerHTML += `${ datos[0].IdentificationService }`;
-  BetweenPictures.innerHTML += ` Cada ${ datos[0].BetweenPictures } Segundo`;
+  Version.innerHTML += `${ datos[0].VersionClient }`;
+  Version2.innerHTML += `${ datos[0].VersionServices }`;
+  IdentificationService.innerHTML += `${ datos[0].iServices } `;
+  BetweenPictures.innerHTML += ` ${ datos[0].BetweenPictures } `;
   CameraMode.innerHTML += `${ datos[0].CameraMode }`;
-  CamarasConectadas.innerHTML += `-`;
+  CamarasConectadas.innerHTML += `${ datos[0].TotalCamera}`;
   TCiclos.innerHTML += `${ datos[0].TotalCiclos }`;
   DCiclo.innerHTML += `${ datos[0].Duracion } Segundos` ;
   Descripcion.innerHTML += `${ datos[0].Descripcion }`;
-  Recurso.innerHTML += `<a href="${ datos[0].Recurso }">${ datos[0].Recurso }`;
+  FaceAnalysisOptimization.innerHTML += `${ datos[0].FaceAnalysisOptimization }`;
 
 			
 			})
@@ -412,3 +572,48 @@ $(document).ready(function(){
 // </script>
 
 
+//<!----- Script 3------>
+//<!-- CAmera Summary-->
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://192.168.100.51:5080/CameraSummary/'+Testnumero+'')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen Camera Summary")   
+  console.log( datos)
+  
+    
+      
+  CamerasSummary.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            CamerasSummary.innerHTML += `
+            <tr align="center">
+                    <th scope="row">${ n }</th>
+                    <td>${ dato.IdCam }</td>
+                    <td>${ dato.HardwareName }</td>
+                    <td>${ dato.CameraUse }</td>
+                    <td>${ dato.IpCameraAddress }</td>
+                    <td> <a href="${ dato.SnapshotUrl }">link Snapshot</a> </td>
+                    <td><a href="${ dato.VideoUrl }">link Video</a></td>
+                    <td>${ dato.Description }</td>
+                    
+					
+                
+            
+            `;
+			}
+			
+			})
+		})
+  })
+
+  
+// </script>

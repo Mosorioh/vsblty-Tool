@@ -88,7 +88,10 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                     # assetName
                     assetName = decoded["assetName"]
                     # engagementType
-                    engagementType = decoded["engagementType"]
+                    try:
+                        engagementType = decoded["engagementType"]
+                    except:
+                        engagementType = None
                     # contentType
                     contentType = decoded["contentType"]
                     #
@@ -142,7 +145,7 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                         except:
                             demographics = None
                             
-
+                        identificationConfidence = ""
                         if (demographics == None):
                             print ("Face No tiene Informacion demografica")
                             age = None
