@@ -37,6 +37,7 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
     TotalFilesGenerados = 0
     TotalFileMetricsIdentification = 0
     TotalFIleSinPersonEngagements = 0
+    BodyTrackingCount = 0
     # segun la cantidad de archivos generados (dirs) se recorre uno a uno
     for file in dirs:
         # Creamos la ruta y el archivo que vamos a trabajar
@@ -58,7 +59,7 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
             if ExcluirFIle > 1:
                 print ("El Archivo APICallsCount no se procesara")
             else:
-                TotalFilesGenerados += 1
+                
                 
                 JsonFileData = []
                 print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
@@ -71,6 +72,9 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                 
                 #///////////////////////////////////////////
                 with open(PathFileMetrics, ) as contenido:
+
+                    TotalFilesGenerados += 1
+
                     datajson = json.load(contenido)
 
                     #encoded
@@ -97,8 +101,16 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                     #
                     camera = decoded["camera"]
                     #
-                    cameraDescription  = decoded["cameraDescription"]                        
-                            
+                    cameraDescription  = decoded["cameraDescription"]  
+                    #
+                    BodyCount  = decoded["bodyCount"]
+                    #
+                    try:
+                        BodyTracking  = decoded["BodyTracking"]
+                        BodyTrackingCount  =len(BodyTracking)                      
+                    except:
+                        BodyTrackingCount = 0
+
 
                     # ///////////////////////////////////
                     # Get data     "personEngagements"
@@ -110,10 +122,10 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
 
                     #print (personEngagements)
                     contador = len(personEngagements) - 1 # restamos uno debido a que la list comienza en 0
-                    print (contador)
-                    input
+                    print ("Contador de personEngagements", contador)
+                    input ()
 
-                    if (contador <= 0):
+                    if (contador < 0):
                         TotalFIleSinPersonEngagements += 1
 
                     # verificamos cuantos Face Fueron detectados el el archivo json   
@@ -179,6 +191,7 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                             else:
                                 name = "Unidentified Person"
                                 identificationConfidence = None
+                                
 
 
                         # ///////////////////////////////////
@@ -208,9 +221,14 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                         from AddJsonMetricsData import addJsonMetricsData
                         addJsonMetricsData (TestID, GuidTest, CountTest, machine, file, GuidFile, timestamp, assetName, engagementType, contentType, Face, localPersistedFaceId, age, Genero, name, bioRecordId, identificationConfidence, camera, cameraDescription)
                         #input ()
+                        
+                        JsonSummary = [TestID, GuidTest, CountTest, GuidFile, file, timestamp, Face, TotalFileMetricsIdentification, BodyCount, BodyTrackingCount, camera, cameraDescription]
+                        #
+                        from AddJsonSummary import AddJsonSummary
+                        AddJsonSummary (JsonSummary)
                         contador = contador - 1
                     
-                    JsonFileData = [TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements]
+                JsonFileData = [TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements]
                         
                         
     return JsonFileData
