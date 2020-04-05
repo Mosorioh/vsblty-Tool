@@ -2,3 +2,8 @@
 wmic /output:D:\ListadoSoftware.txt product get name,version
 
 wmic /output:D:\ListadoSoftware.csv product get name,version
+
+wmic /output:D:\ListadoSoftware.txt product where "Vendor like '%vsblty%'" get Name, Version
+
+
+wmic /output:D:\ListadoSoftware.htm product where "Vendor like '%vsblty%'" get Name, Version /format:htable

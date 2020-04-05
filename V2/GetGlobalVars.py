@@ -26,7 +26,7 @@ def Getvaribles():
         #print ("**********************************")
         #print ("--- Get Endpoint Global Vars --")
 
-        EdgeDetection = str(decoded["List"][92]["Value"])
+        EdgeDetection = str(decoded["List"][95]["Value"])
         FaceAnalysisOptimization = str(decoded["List"][93]["Value"])
         TimeBetweenPictures = str(decoded["List"][108]["Value"])
         ReocurringVisitor = str(decoded["List"][105]["Value"])
@@ -86,7 +86,7 @@ PollingCamera  = EndpointSetting[18]
 ContentSwappedInterval  = EndpointSetting[19]
 
 """
-print (EdgeDetection)
+print ("EdgeDetection ", EdgeDetection)
 print (FaceAnalysisOptimization)
 print (TimeBetweenPictures)
 print (ReocurringVisitor)

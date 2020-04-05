@@ -88,11 +88,21 @@ def MoverFolder (FolderCiclo):
 
     try:
         FolderSavephotos = "C:/ProgramData/VsbltyTmp/KingSalmon/"
-        print (" - Moviendo Folder SavePhotos: ", Archivo)
+        print (" - Moviendo Folder SavePhotos: ", FolderSavephotos)
         shutil.move(FolderSavephotos, FolderCiclo)
         time.sleep(1)
     except FileExistsError:
         print (" - folder SavePhotos No Exists") 
+    
+    try:
+        Usage = "C:/ProgramData/Vsblty/Kiosk Framework/Usage/"
+        print (" - Moviendo Folder Usage: ", Usage)
+        shutil.move(Usage, FolderCiclo)
+        time.sleep(1)
+    except FileExistsError:
+        print (" - folder Usage No Exists") 
+    except FileNotFoundError:
+        print (" - folder Usage No Exists") 
 
     
     return Archivo

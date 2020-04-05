@@ -105,4 +105,4 @@ def Mainpais(idpais):
 
 if __name__ == '__main__':
     #app.run( )
-    app.run(host='192.168.100.156', port=5070, debug=True)
+    app.run(host='192.168.100.233', port=5070, debug=True)

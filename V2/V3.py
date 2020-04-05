@@ -21,6 +21,16 @@ import pymysql
 import uuid 
 
 # //////////////////////////////////////
+# Detener el Servicio de Windows
+#///////////////////////////////////////
+print ("*******************************************************************")
+print ("///////////////////////////////////////////////////////////////////")
+print ("Deteniendo El Servicio de Windows" )
+os.system('net stop VisionCaptorServices')
+print ("///////////////////////////////////////////////////////////////////")
+print ("")
+
+# //////////////////////////////////////
 # Peticiones a otros archivos
 #///////////////////////////////////////
 from Setting import Setting
@@ -29,14 +39,16 @@ from Setting import Setting
 today = Setting[0]
 GuidTest = Setting[1]
 Hostname = Setting[2]
-CameraMode = Setting[6]
-IdentificationService = Setting[4]
-BetweenPictures = Setting[5]
+CameraMode = Setting[7]
+IdentificationService = Setting[5]
+BetweenPictures = Setting[6]
 Version = Setting[3]
-NumerodeCiclos = Setting[7]
-DuracionTest = Setting[8]
-Descripcion = Setting[9]
-Recurso = 2
+VersionService = Setting[4]
+NumerodeCiclos = Setting[8]
+DuracionTest = Setting[9]
+Descripcion = Setting[10]
+FaceAnalysisOptimization = Setting[11]
+
   
 # //////////////////////////////////////
 # Global vars
@@ -72,7 +84,7 @@ print ("Camera Mode: ", CameraMode)
 #///////////////////////////////////////
 from addtest import addtest
 # call function addtest
-addtest (today, GuidTest, Hostname, NumerodeCiclos, DuracionTest, Descripcion, Version, IdentificationService, BetweenPictures, CameraMode, TotalCameraSetting)
+addtest (today, GuidTest, Hostname, NumerodeCiclos, DuracionTest, Descripcion, Version, IdentificationService, BetweenPictures, CameraMode, TotalCameraSetting, VersionService, FaceAnalysisOptimization)
 
 # //////////////////////////////////////
 # Get Test-Id Creado segun el GUID
@@ -82,7 +94,7 @@ from GetTestId import GetTestId
 TestID = GetTestId (GuidTest)
 print ("Identificacion: ", IdentificationService)
 print ("Test Id: ", TestID)
-
+#input ()
 
 
 #/////////////////////////////////////////////////////////////////////////////////////
@@ -281,9 +293,21 @@ while CountTest <= NumerodeCiclos:
     CpuAvg = Average[0]
     RamAvg = Average[1]
 
+    #////////////////////////////////////////////////////
+    # *******************
+    # process Analisi json File Metricas
+    # *******************
+    #///////////////////////////////////////////////////
+    from AnalysisJsonMetrics import AnalysisJsonMetrics
+    JsonFileData = AnalysisJsonMetrics(TestID, GuidTest, CountTest)
+    TotalFilesGenerados = JsonFileData[0]
+    TotalFileMetricsIdentification = JsonFileData[1]
+    TotalFIleSinPersonEngagements = JsonFileData[2]
+
+    #///////////////////////////////////////////////////
     # Insertar resultados tptales CycleSummary DB
     from AddCycleSummary import addCycleSummary
-    addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0], TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification[0], CpuAvg, RamAvg)
+    addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0], TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification[0], CpuAvg, RamAvg, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements)
     #input()
 
     #/////////////////////////////////////////////////////
@@ -326,4 +350,13 @@ print ("End Task Ciclos")
 print ("*****************************************************************")
 print ("*****************************************************************")
 
+# //////////////////////////////////////
+# Detener el Servicio de Windows
+#///////////////////////////////////////
+
+print ("///////////////////////////////////////////////////////////////////")
+print ("Iniciando el Servicio de Windows")
+os.system('net start VisionCaptorServices')
+print ("///////////////////////////////////////////////////////////////////")
+print ("")
 

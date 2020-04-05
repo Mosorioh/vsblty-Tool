@@ -1,0 +1,1 @@
+start /d "wmic /output:D:\ListadoSoftware.txt product where Vendor like '%vsblty%' get Name, Version" 

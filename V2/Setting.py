@@ -47,7 +47,10 @@ Hostname = socket.gethostname()
 #///////////////////////////////////////////
 # Get version
 #///////////////////////////////////////////
-Version = "4.20.402.1"
+from GetVersion import GetVersion
+GetVersion = GetVersion ()
+VersionClient = GetVersion[0]
+VersionService = GetVersion[1]
 
 #///////////////////////////////////////////
 # Get Identification Service
@@ -69,6 +72,13 @@ if (EdgeDetection == "false"):
 from GetGlobalVars import TimeBetweenPictures
 BetweenPictures = TimeBetweenPictures
 
+
+#///////////////////////////////////////////
+# Get Face Analysis Optimization
+#///////////////////////////////////////////
+from GetGlobalVars import FaceAnalysisOptimization
+FaceAnalysisOptimization = FaceAnalysisOptimization
+
 #///////////////////////////////////////////
 # Get Camera Mode
 #///////////////////////////////////////////
@@ -89,17 +99,17 @@ def CameraMode (PollingCamera, TotalCameraSetting):
 #///////////////////////////////////////////
 # Get Numero de Ciclos por cada Prueba
 #///////////////////////////////////////////
-NumerodeCiclos = 1
+NumerodeCiclos = 2
 
 #///////////////////////////////////////////
 # Duracion Por Prueba
 #///////////////////////////////////////////
-DuracionTest = 600
+DuracionTest = 300
 
 #///////////////////////////////////////////
 # Descripcion
 #///////////////////////////////////////////
-Descripcion = "(1) Dewey Static"
+Descripcion = "Version 3 Automatizacion"
 
 #///////////////////////////////////////////
 # Variables con las Rutas constantes de Archivos
@@ -109,6 +119,7 @@ PathFolderBeforeProcessing = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/Bef
 PathFolderFrameReceived = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/FrameReceived/"
 PathFolderFrameLocalPhotos = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/LocalPhotos/"
 PathFolderFrameAfterIdentification = "C:/ProgramData/VsbltyTmp/KingSalmon/TempPhotos/AfterIdentification/"
+PathMetrics = "C:/ProgramData/Vsblty/Kiosk Framework/Usage/"
 
 #///////////////////////////////////////////
 # Parametros de Busqueda
@@ -124,11 +135,13 @@ Setting = [
         today,
         GuidTest, 
         Hostname, 
-        Version, 
+        VersionClient,
+        VersionService, 
         IdentificationService,
         BetweenPictures, 
         CameraMode,
         NumerodeCiclos,
         DuracionTest,
-        Descripcion
+        Descripcion,
+        FaceAnalysisOptimization
         ]
