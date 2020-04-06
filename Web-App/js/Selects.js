@@ -63,12 +63,13 @@ $(document).ready(function(){
                     <td>${ dato.LocalPhotos }</td>
                     <td>${ dato.AfterIdentification }</td>
                               
-                    <td>${ dato.CpuAve } %</td>
-                    <td>${ dato.RamAve } MB</td>
+                    <td>${ dato.CpuAve }</td>
+                    <td>${ dato.RamAve }</td>
                     <td>${ dato.TotalError }</td>
                     <td>${ dato.TotalFileMetrics }</td>
                     <td>${ dato.TotalFileMetricsIdentification }</td>
                     <td>${ dato.TotalFIleSinPersonEngagements }</td>
+                    <td>${ dato.TotalEmails }</td>
                 </tr>
                 
             
@@ -604,6 +605,157 @@ $(document).ready(function(){
                     <td> <a href="${ dato.SnapshotUrl }">link Snapshot</a> </td>
                     <td><a href="${ dato.VideoUrl }">link Video</a></td>
                     <td>${ dato.Description }</td>
+                    
+					
+                
+            
+            `;
+			}
+			
+			})
+		})
+  })
+
+  
+// </script>
+
+
+
+
+//<!----- Script 3------>
+//<!-- Emails
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://192.168.100.51:5080/Emails/'+Testnumero+'')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen Emails")   
+  console.log( datos)
+  
+    
+      
+  Emails.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            Emails.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.Time }</td>
+                    <td>${ dato.PersonName }</td>
+                    <td>${ dato.PersonId }</td>
+
+                    
+					
+                
+            
+            `;
+			}
+			
+			})
+		})
+  })
+
+  
+// </script>
+
+
+
+
+//<!----- Script 3------>
+//<!-- Error
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://192.168.100.51:5080/Error/'+Testnumero+'')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen Error")   
+  console.log( datos)
+  
+    
+      
+  Errordiv.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            Errordiv.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.File }</td>
+                    <td>${ dato.LineLogError }</td>
+                    <td>${ dato.InfoLog }</td>
+                    
+
+                    
+					
+                
+            
+            `;
+			}
+			
+			})
+		})
+  })
+
+  
+// </script>
+
+
+//<!----- Script 3------>
+//<!-- Error
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://192.168.100.51:5080/JsonMetrics/'+Testnumero+'')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen JsonMetrics")   
+  console.log( datos)
+  
+    
+      
+  JsonMetrics.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            JsonMetrics.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.GuidFile }</td>
+                    <td>${ dato.assetName }</td>
+                    <td>${ dato.engagementType }</td>
+                    <td>${ dato.contentType }</td>
+                    <td>${ dato.faceId }</td>
+                    <td>${ dato.localPersistedFaceId }</td>
+                    <td>${ dato.age }</td>
+                    <td>${ dato.Genero }</td>
+                    <td>${ dato.bioRecordId }</td>
+                    <td>${ dato.IdentityName }</td>
+                    <td>${ dato.identificationConfidence }</td>
+                    
+                    
+
                     
 					
                 

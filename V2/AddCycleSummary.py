@@ -7,7 +7,7 @@ import pymysql
 from Conexion import Conexion
 
 
-def addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived, TotalBeforeProcessing, TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification, CpuAve, RamAve, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements):
+def addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived, TotalBeforeProcessing, TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification, CpuAve, RamAve, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements, TotalEmails):
     faceapi = -1
     # Connect to the database
     connection = pymysql.connect(host=Conexion[0],
@@ -21,8 +21,8 @@ def addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, Total
         with connection.cursor() as cursor:
         # Create a new record
                          
-            sql = "INSERT INTO `CycleSummary` (`IdTest`, `GuidTest`, `Ciclo`, `TotalIdentificacion`, `TotalFrameReceived`, `TotalBeforeProcessing`,  `TotalFaceAPIResults`, `TotalError`, `LocalPhotos`, `AfterIdentification`, `CpuAve`, `RamAve`, `TotalFileMetrics`, `TotalFileMetricsIdentification`, `TotalFIleSinPersonEngagements` ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            cursor.execute(sql, (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived, TotalBeforeProcessing, faceapi, TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification, CpuAve, RamAve, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements))
+            sql = "INSERT INTO `CycleSummary` (`IdTest`, `GuidTest`, `Ciclo`, `TotalIdentificacion`, `TotalFrameReceived`, `TotalBeforeProcessing`,  `TotalFaceAPIResults`, `TotalError`, `LocalPhotos`, `AfterIdentification`, `CpuAve`, `RamAve`, `TotalFileMetrics`, `TotalFileMetricsIdentification`, `TotalFIleSinPersonEngagements`, `TotalEmails` ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            cursor.execute(sql, (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived, TotalBeforeProcessing, faceapi, TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification, CpuAve, RamAve, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements, TotalEmails))
             
             # connection is not autocommit by default. So you must commit to save
             # your changes.

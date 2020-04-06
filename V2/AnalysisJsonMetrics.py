@@ -123,7 +123,7 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                     #print (personEngagements)
                     contador = len(personEngagements) - 1 # restamos uno debido a que la list comienza en 0
                     print ("Contador de personEngagements", contador)
-                    input ()
+                    #input ()
 
                     if (contador < 0):
                         TotalFIleSinPersonEngagements += 1

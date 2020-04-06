@@ -251,13 +251,19 @@ while CountTest <= NumerodeCiclos:
     #///////////////////////////////////////
     
     # Identificaciones
+    print ("///// Log Identificaciones ///////")
     from AnalysisLog import AnalysisLog
     TotalFaceIdentificacion = AnalysisLog (GuidTest, IdentificationService, today, TestID, CountTest, Hostname)
     
     # Errores
-    print ("///// LogError ///////")
+    print ("///// Log Error ///////")
     from AnalysisLogError import AnalysisLogError
     TotalError = AnalysisLogError (TestID, GuidTest, CountTest, Hostname, Version)
+
+    # Emails
+    print ("///// Log Emails ///////")
+    from AnalysisLogEmails import AnalysisLogEmails
+    TotalEmails = AnalysisLogEmails (TestID, GuidTest, CountTest)
 
     #/////////////////////////////////////////////////////
     # Frame Summary 3.6 
@@ -307,7 +313,7 @@ while CountTest <= NumerodeCiclos:
     #///////////////////////////////////////////////////
     # Insertar resultados tptales CycleSummary DB
     from AddCycleSummary import addCycleSummary
-    addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0], TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification[0], CpuAvg, RamAvg, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements)
+    addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0], TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification[0], CpuAvg, RamAvg, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements, TotalEmails)
     #input()
 
     #/////////////////////////////////////////////////////

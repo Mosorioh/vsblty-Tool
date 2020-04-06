@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Reports Test</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -54,6 +54,7 @@
     <li><a data-toggle="tab" href="#menu5">Performance</a></li>
     <li><a data-toggle="tab" href="#menu6">Error</a></li>
     <li><a data-toggle="tab" href="#menu7">Json Metrics</a></li>
+    <li><a data-toggle="tab" href="#menu8">Emails</a></li>
   </ul>
 
   <div class="tab-content">
@@ -124,12 +125,13 @@
                   <th scope="col">Local Photos</th>
                   <th scope="col">After Identification</th>
                         <!-- <th scope="col">Face API Results</th> -->
-                  <th scope="col">Cpu Avg</th>
-                  <th scope="col">Ram Avg</th>
+                  <th scope="col">Cpu %</th>
+                  <th scope="col">Ram MB</th>
                   <th scope="col">Total Error</th>
                   <th scope="col">Json Generados </th>
                   <th scope="col"> Personas Identificadas in Json</th>
                   <th scope="col"> Json Sin PersonEngagements</th>
+                  <th scope="col"> Emails Sent</th>
                   
               </tr>
           </thead>
@@ -327,22 +329,19 @@
   
     <div id="menu6" class="tab-pane fade">
       <h3>Error</h3>
-
-      <h4 align="center">Summary Error</h4>
       <table class="table table-striped table-dark table-hover">
           <thead class="thead-dark">
               <tr>
                   <th scope="col">#</th>
-                  
+                  <th scope="col">Ciclo</th>
                   <th scope="col">File</th>
                   <th scope="col">Error Line</th>
-                  <th scope="col">Time Line</th>
                   <th scope="col">Info Log </th>
 
                   
               </tr>
           </thead>
-          <tbody align="center" id="ResumenCiclo3">
+          <tbody id="Errordiv">
               
           </tbody>
       </table>
@@ -353,18 +352,18 @@
       <h3>Json File</h3>
 
       <h4 align="center">Summary Metrics Files</h4>
-      <table class="table table-striped table-dark table-hover">
-          <thead class="thead-dark">
+      <table class="table table-hover">
+        <thead style="color: white; background-color: rgb(177, 177, 177);">
               <tr>
                   <th scope="col">#</th>
-                  
+                  <th scope="col">Ciclo</th>
                   <th scope="col">File</th>
-                  <th scope="col">assetName</th>
-                  <th scope="col">engagementType</th>
-                  <th scope="col">contentType</th>
-                  <th scope="col">faceId</th>
-                  <th scope="col">localPersistedFaceId</th>
-                  <th scope="col">age</th>
+                  <th scope="col">Asset</th>
+                  <th scope="col">Vista</th>
+                  <th scope="col">ContentType</th>
+                  <th scope="col">FaceId</th>
+                  <th scope="col">localPersisted</th>
+                  <th scope="col">Age</th>
                   <th scope="col">Genero</th>
                   <th scope="col">bioRecordId</th>
                   <th scope="col">IdentityName</th>
@@ -376,10 +375,36 @@
                   
               </tr>
           </thead>
-          <tbody align="center" id="ResumenCiclo2">
+          <tbody align="center" id="JsonMetrics">
               
           </tbody>
-      </table></div>
+      </table>
+    </div>
+    <div id="menu8" class="tab-pane fade">
+      <h3>Emails Send</h3>
+
+      <h4 align="center">Summary Emails</h4>
+      <table class="table table-striped table-dark table-hover">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col">#</th>
+                  
+                  <th scope="col">Ciclo</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Person Name</th>
+                  <th scope="col">PersonId</th>
+                  
+
+    
+
+                  
+              </tr>
+          </thead>
+          <tbody align="center" id="Emails">
+              
+          </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -392,13 +417,20 @@
 
 <!-- Grafico columnas -->
 <script>
+
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
   // Visualization API with the 'corechart' package.
   google.charts.load('visualization', { packages: ['corechart'] });
   google.charts.setOnLoadCallback(drawLineChart);
 
-  function drawLineChart() {
+  function drawLineChart(urldata) {
+    console.log (urldata)
       $.ajax({
-          url: "http://192.168.100.233:5070/Indice/185",
+          url: 'http://181.199.66.129:5080/Indice/'+Testnumero+'',
           dataType: "json",
           type: "GET",
           contentType: "application/json; charset=utf-8",
@@ -429,19 +461,27 @@
           }
       });
   }
+})
+  })
 </script>
 
 
 
 <!-- Grafico columnas -->
 <script>
+
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
   // Visualization API with the 'corechart' package.
   google.charts.load('visualization', { packages: ['corechart'] });
   google.charts.setOnLoadCallback(drawLineChart);
 
   function drawLineChart() {
       $.ajax({
-          url: "http://192.168.100.233:5070/Indice/185",
+          url: 'http://181.199.66.129:5080/Indice/'+Testnumero+'',
           dataType: "json",
           type: "GET",
           contentType: "application/json; charset=utf-8",
@@ -474,6 +514,8 @@
           }
       });
   }
+})
+  })
 </script>
 
 

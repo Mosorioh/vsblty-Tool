@@ -104,7 +104,7 @@ NumerodeCiclos = 4
 #///////////////////////////////////////////
 # Duracion Por Prueba
 #///////////////////////////////////////////
-DuracionTest = 120
+DuracionTest = 300
 
 #///////////////////////////////////////////
 # Descripcion
@@ -127,8 +127,9 @@ PathMetrics = "C:/ProgramData/Vsblty/Kiosk Framework/Usage/"
 BusquedaLogIdentCloud = "[CLOUD Detection][FaceAnalysis] Identified Person"
 BusquedaLogIdentEdge = "[EDGE Detection] Identified Person >> Name:"
 BusquedaLogError = "ERROR"
+BusquedaLogEmail = "Client_SendCompleted DONE"
 
-ParametroBusqueda = [BusquedaLogIdentCloud, BusquedaLogIdentEdge, BusquedaLogError]
+ParametroBusqueda = [BusquedaLogIdentCloud, BusquedaLogIdentEdge, BusquedaLogError, BusquedaLogEmail]
 
 
 Setting = [
