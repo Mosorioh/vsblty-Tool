@@ -128,8 +128,9 @@ BusquedaLogIdentCloud = "[CLOUD Detection][FaceAnalysis] Identified Person"
 BusquedaLogIdentEdge = "[EDGE Detection] Identified Person >> Name:"
 BusquedaLogError = "ERROR"
 BusquedaLogEmail = "Client_SendCompleted DONE"
+BusquedaLogFaceAnalysisTook= "Face Analysis Function took"
 
-ParametroBusqueda = [BusquedaLogIdentCloud, BusquedaLogIdentEdge, BusquedaLogError, BusquedaLogEmail]
+ParametroBusqueda = [BusquedaLogIdentCloud, BusquedaLogIdentEdge, BusquedaLogError, BusquedaLogEmail, BusquedaLogFaceAnalysisTook]
 
 
 Setting = [

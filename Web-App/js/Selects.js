@@ -724,36 +724,33 @@ $(document).ready(function(){
     var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
     //console.log("Test Seleccionado: " + Testnumero) 
 
-   fetch('http://192.168.100.51:5080/JsonMetrics/'+Testnumero+'')
+   fetch('http://192.168.100.51:5080/JsonSummary/'+Testnumero+'')
 
 	.then(datos=>datos.json())
 	.then(datos=>{
-  console.log("Resultado resumen JsonMetrics")   
+  console.log("Resultado resumen JsonSummary")   
   console.log( datos)
   
     
       
-  JsonMetrics.innerHTML = '';
+  JsonSummary.innerHTML = '';
         
         n = 0
         for(let dato of datos){
             n++;
-            JsonMetrics.innerHTML += `
+            JsonSummary.innerHTML += `
             <tr>
                     <th scope="row">${ n }</th>
                     <td>${ dato.Ciclo }</td>
                     <td>${ dato.GuidFile }</td>
-                    <td>${ dato.assetName }</td>
+                    <td>${ dato.Time.substring(0, 19) }</td>
                     <td>${ dato.engagementType }</td>
-                    <td>${ dato.contentType }</td>
-                    <td>${ dato.faceId }</td>
-                    <td>${ dato.localPersistedFaceId }</td>
-                    <td>${ dato.age }</td>
-                    <td>${ dato.Genero }</td>
-                    <td>${ dato.bioRecordId }</td>
-                    <td>${ dato.IdentityName }</td>
-                    <td>${ dato.identificationConfidence }</td>
-                    
+                    <td>${ dato.DetectedFaces }</td>
+                    <td>${ dato.identifications}</td>
+                    <td>${ dato.Bodycount }</td>
+                    <td>${ dato.BodyTracking }</td>
+                    <td>${ dato.CameraDescrption }</td>
+
                     
 
                     
@@ -768,4 +765,164 @@ $(document).ready(function(){
   })
 
   
+// </script>
+
+
+
+//<!----- Script 3------>
+//<!-- Error
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://181.199.66.129:5080/FaceAnalysisTook/'+Testnumero+'/1')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen Face Analysis Took")   
+  console.log( datos)
+      
+  FaceAnalysisTook.innerHTML = '';
+        
+            
+            FaceAnalysisTook.innerHTML += `
+            Ciclo 1: Average: ${ datos.Average.substring(0, 4)  } Seg. -- Tiempo Maximo: ${ datos.Maximo } -- Numero de llamadas:  ${ datos.Count } 
+               
+            `;
+		
+			
+			})
+		})
+  })
+
+// </script>
+
+
+//<!----- Script 3------>
+//<!-- Error
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://181.199.66.129:5080/FaceAnalysisTook/'+Testnumero+'/2')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen Face Analysis Took")   
+  console.log( datos)
+      
+  FaceAnalysisTook2.innerHTML = '';
+        
+            
+            FaceAnalysisTook2.innerHTML += `
+            Ciclo 2: Average: ${ datos.Average.substring(0, 4) } Seg. -- Tiempo Maximo: ${ datos.Maximo } -- Numero de llamadas:  ${ datos.Count } 
+               
+            `;
+		
+			
+			})
+		})
+  })
+
+// </script>
+
+
+//<!----- Script 3------>
+//<!-- Error
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://181.199.66.129:5080/FaceAnalysisTook/'+Testnumero+'/3')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen Face Analysis Took")   
+  console.log( datos)
+      
+  FaceAnalysisTook3.innerHTML = '';
+        
+            
+            FaceAnalysisTook3.innerHTML += `
+            Ciclo 3: Average: ${ datos.Average.substring(0, 4)  } Seg. -- Tiempo Maximo: ${ datos.Maximo } -- Numero de llamadas:  ${ datos.Count } 
+               
+            `;
+			
+			})
+		})
+  })
+
+// </script>
+
+
+//<!----- Script 3------>
+//<!-- Error
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://181.199.66.129:5080/FaceAnalysisTook/'+Testnumero+'/4')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen Face Analysis Took")   
+  console.log( datos)
+      
+  FaceAnalysisTook4.innerHTML = '';
+        
+            
+            FaceAnalysisTook4.innerHTML += `
+            Ciclo 4: Average: ${ datos.Average.substring(0, 4)  } Seg. -- Tiempo Maximo: ${ datos.Maximo } -- Numero de llamadas:  ${ datos.Count } 
+               
+            `;
+		
+			
+			})
+		})
+  })
+
+// </script>
+
+//<!----- Script 3------>
+//<!-- Error
+//<script>	  
+$(document).ready(function(){
+  $("#Test").on("change",function(){						
+    var Testnumero =$(this).val()//obtenemos el valor seleccionado en una variable	
+    //console.log("Test Seleccionado: " + Testnumero) 
+
+   fetch('http://181.199.66.129:5080/FaceAnalysisTook/'+Testnumero+'')
+
+	.then(datos=>datos.json())
+	.then(datos=>{
+  console.log("Resultado resumen Face Analysis Took")   
+  console.log( datos)
+      
+  FaceAnalysisTookTable.innerHTML = '';
+        
+        n = 0
+        for(let dato of datos){
+            n++;
+            FaceAnalysisTookTable.innerHTML += `
+            <tr>
+                    <th scope="row">${ n }</th>
+                    <td>${ dato.Ciclo }</td>
+                    <td>${ dato.InfoLog }</td>
+
+            
+            `;
+		
+          }
+			})
+		})
+  })
+
 // </script>

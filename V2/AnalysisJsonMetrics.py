@@ -38,6 +38,8 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
     TotalFileMetricsIdentification = 0
     TotalFIleSinPersonEngagements = 0
     BodyTrackingCount = 0
+    TotalFaces = 0
+    
     # segun la cantidad de archivos generados (dirs) se recorre uno a uno
     for file in dirs:
         # Creamos la ruta y el archivo que vamos a trabajar
@@ -60,7 +62,8 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                 print ("El Archivo APICallsCount no se procesara")
             else:
                 
-                
+                IdentificacionInJson = 0
+                FacesJson = 0
                 JsonFileData = []
                 print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
                 # Asignar Guid para cada Archivo
@@ -106,7 +109,7 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                     BodyCount  = decoded["bodyCount"]
                     #
                     try:
-                        BodyTracking  = decoded["BodyTracking"]
+                        BodyTracking  = decoded["bodyTracking"]
                         BodyTrackingCount  =len(BodyTracking)                      
                     except:
                         BodyTrackingCount = 0
@@ -187,10 +190,12 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                             if bioRecordId != "00000000-0000-0000-0000-000000000000":
                                 name = demographics ["IdentityName"]
                                 identificationConfidence = demographics ["identificationConfidence"]
+                                IdentificacionInJson += 1
                                 TotalFileMetricsIdentification += 1
                             else:
                                 name = "Unidentified Person"
                                 identificationConfidence = None
+                                
                                 
 
 
@@ -221,12 +226,17 @@ def AnalysisJsonMetrics (TestID, GuidTest, CountTest):
                         from AddJsonMetricsData import addJsonMetricsData
                         addJsonMetricsData (TestID, GuidTest, CountTest, machine, file, GuidFile, timestamp, assetName, engagementType, contentType, Face, localPersistedFaceId, age, Genero, name, bioRecordId, identificationConfidence, camera, cameraDescription)
                         #input ()
-                        
-                        JsonSummary = [TestID, GuidTest, CountTest, GuidFile, file, timestamp, Face, TotalFileMetricsIdentification, BodyCount, BodyTrackingCount, camera, cameraDescription]
-                        #
-                        from AddJsonSummary import AddJsonSummary
-                        AddJsonSummary (JsonSummary)
+
                         contador = contador - 1
+                        TotalFaces = TotalFaces + 1
+                        FacesJson = FacesJson + 1
+                        
+                    JsonSummary = [TestID, GuidTest, CountTest, GuidFile, file, timestamp, FacesJson, IdentificacionInJson, BodyCount, BodyTrackingCount, camera, cameraDescription, engagementType]
+                    #
+                    from AddJsonSummary import AddJsonSummary
+                    AddJsonSummary (JsonSummary)
+
+                        
                     
                 JsonFileData = [TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements]
                         

@@ -55,6 +55,7 @@
     <li><a data-toggle="tab" href="#menu6">Error</a></li>
     <li><a data-toggle="tab" href="#menu7">Json Metrics</a></li>
     <li><a data-toggle="tab" href="#menu8">Emails</a></li>
+    <li><a data-toggle="tab" href="#menu9">Face Analysis</a></li>
   </ul>
 
   <div class="tab-content">
@@ -305,27 +306,6 @@
    
 
 
-
-  
-
-    <div id="menu5"  class="fade" >
-      <h3>Performance</h3>
-        <div class="row">
-          <div class="col-sm-12">
-            <h5>CPU (%)</h5>
-            <div id="chart" style="width:100%; height:100%;">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <h5>RAM (MB)</h5>
-              <div id="chart2" style="width:100%; height:100%;">
-              </div>
-          </div>
-        </div>
-    </div>
   
     <div id="menu6" class="tab-pane fade">
       <h3>Error</h3>
@@ -357,17 +337,15 @@
               <tr>
                   <th scope="col">#</th>
                   <th scope="col">Ciclo</th>
-                  <th scope="col">File</th>
-                  <th scope="col">Asset</th>
-                  <th scope="col">Vista</th>
-                  <th scope="col">ContentType</th>
-                  <th scope="col">FaceId</th>
-                  <th scope="col">localPersisted</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Genero</th>
-                  <th scope="col">bioRecordId</th>
-                  <th scope="col">IdentityName</th>
-                  <th scope="col">identificationConfidence</th>
+                  <th scope="col">GuidFile</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">View</th>
+                  <th scope="col">DetectedFaces</th>
+                  <th scope="col">identifications</th>
+                  <th scope="col">Bodycount</th>
+                  <th scope="col">BodyTracking</th>
+                  <th scope="col">Descrption</th>
+   
 
                   
 
@@ -375,7 +353,7 @@
                   
               </tr>
           </thead>
-          <tbody align="center" id="JsonMetrics">
+          <tbody align="center" id="JsonSummary">
               
           </tbody>
       </table>
@@ -384,15 +362,15 @@
       <h3>Emails Send</h3>
 
       <h4 align="center">Summary Emails</h4>
-      <table class="table table-striped table-dark table-hover">
-          <thead class="thead-dark">
-              <tr>
+      <table class="table table-hover">
+        <thead style="color: white; background-color: rgb(177, 177, 177);">
+              <tr align="center">
                   <th scope="col">#</th>
                   
                   <th scope="col">Ciclo</th>
                   <th scope="col">Time</th>
                   <th scope="col">Person Name</th>
-                  <th scope="col">PersonId</th>
+                  <th align="center" scope="col">PersonId</th>
                   
 
     
@@ -404,6 +382,53 @@
               
           </tbody>
       </table>
+    </div>
+
+    <div id="menu9" class="tab-pane fade">
+ 
+
+      <h4 align="center">Face Analysis Took</h4>
+      <ul class="list-group">
+        <li class="list-group-item"> <div id="FaceAnalysisTook">  </div> </li>
+        <li class="list-group-item"> <div id="FaceAnalysisTook2">  </div> </li>
+        <li class="list-group-item"> <div id="FaceAnalysisTook3">  </div> </li>
+        <li class="list-group-item"> <div id="FaceAnalysisTook4">  </div> </li>
+      </ul>
+      <table class="table table-hover">
+        <thead style="color: white; background-color: rgb(177, 177, 177);">
+              <tr align="center">
+
+                  <th scope="col">#</th>
+                  <th scope="col">Ciclo</th>
+                  <th scope="col">InfoLog</th>
+
+              </tr>
+          </thead>
+          <tbody id="FaceAnalysisTookTable">
+              
+          </tbody>
+      </table>
+    </div>
+
+
+    
+    <div id="menu5"  class="fade" >
+      <h3>Performance</h3>
+        <div class="row">
+          <div class="col-sm-12">
+            <h5>CPU (%)</h5>
+            <div id="chart" style="width:100%; height:100%;">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h5>RAM (MB)</h5>
+              <div id="chart2" style="width:100%; height:100%;">
+              </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>

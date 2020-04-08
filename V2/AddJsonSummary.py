@@ -21,6 +21,15 @@ def AddJsonSummary (JsonSummary):
     BodyTracking = JsonSummary[9]
     CameraId = JsonSummary[10]
     CameraDescrption = JsonSummary[11]
+    engagementType = JsonSummary[12] 
+
+    if (engagementType == 1):
+        engagementType = "Entice"
+    if (engagementType == 2):
+        engagementType = "Engage"
+    if (engagementType == 3):
+        engagementType = "Interactive"
+
 
     # Connect to the database
     connection = pymysql.connect(host=Conexion[0],
@@ -34,8 +43,8 @@ def AddJsonSummary (JsonSummary):
         with connection.cursor() as cursor:
         # Create a new record
                          
-            sql = "INSERT INTO `JsonSummary` (`TestId`, `GuidTest`, `Ciclo`, `GuidFile`, `File`,  `Time`, `DetectedFaces`, `identifications`, `Bodycount`, `BodyTracking`, `CameraId`, `CameraDescrption`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            cursor.execute(sql, (TestId, GuidTest, CountTest, GuidFile, file,  Time, DetectedFaces, identifications, Bodycount, BodyTracking, CameraId, CameraDescrption))
+            sql = "INSERT INTO `JsonSummary` (`TestId`, `GuidTest`, `Ciclo`, `GuidFile`, `File`,  `Time`, `DetectedFaces`, `identifications`, `Bodycount`, `BodyTracking`, `CameraId`, `CameraDescrption`, `engagementType`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            cursor.execute(sql, (TestId, GuidTest, CountTest, GuidFile, file,  Time, DetectedFaces, identifications, Bodycount, BodyTracking, CameraId, CameraDescrption, engagementType))
             
             # connection is not autocommit by default. So you must commit to save
             # your changes.

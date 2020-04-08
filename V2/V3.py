@@ -225,7 +225,7 @@ while CountTest <= NumerodeCiclos:
     #///////////////////////////////////////
     SleepTest = 0
     while (SleepTest < DuracionTest):
-        time.sleep(29)
+        time.sleep(15)
         from Performance import GetProcessID, GetValueCpu, GetValueRam
         PID = GetProcessID()
         Cpu = GetValueCpu(PID)
@@ -234,7 +234,7 @@ while CountTest <= NumerodeCiclos:
         from AddPerformance import AddPerformance
         AddPerformance (TestID, GuidTest, CountTest, PID, Cpu, Ram)
         #
-        SleepTest = SleepTest + 30
+        SleepTest = SleepTest + 15
     
     #///////////////////////////////////////
     # Close Client  (3.4)
@@ -264,6 +264,11 @@ while CountTest <= NumerodeCiclos:
     print ("///// Log Emails ///////")
     from AnalysisLogEmails import AnalysisLogEmails
     TotalEmails = AnalysisLogEmails (TestID, GuidTest, CountTest)
+
+    # Face Analysis Function took
+    print ("///// Log Face Analysis Function took ///////")
+    from AnalysisLogFaceAnalysisFun import AnalysisLogFaceAnalysis
+    AnalysisLogFaceAnalysis (TestID, GuidTest, CountTest)
 
     #/////////////////////////////////////////////////////
     # Frame Summary 3.6 

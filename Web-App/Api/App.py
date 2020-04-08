@@ -293,7 +293,7 @@ def Emails(idtest):
     try:
         with connection.cursor() as cursor:
             # Read a single record
-            sql = "SELECT * FROM `Emails` WHERE `IdTest` =%s"
+            sql = "SELECT * FROM `Emails` WHERE `IdTest` =%s ORDER BY `Time`"
             cursor.execute(sql, (idtest))
             result = cursor.fetchall()
             print(result)
@@ -354,6 +354,31 @@ def JsonMetrics(idtest):
         connection.close()
 
 
+#//////////////////////////////////////////
+# Api Error
+#//////////////////////////////////////////
+@app.route('/JsonSummary/<idtest>')
+def JsonSummary(idtest):
+    # Connect to the database
+    connection = pymysql.connect(host='192.168.100.51',
+                                user='Qatest',
+                                password='Quito.2019',
+                                db='Log-identificacion',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT * FROM `JsonSummary` WHERE `TestId` =%s ORDER BY `Time`"
+            cursor.execute(sql, (idtest))
+            result = cursor.fetchall()
+            print(result)
+
+        return jsonify(result)
+    finally:
+        connection.close()
+
 
 
 #///////////////////////////////////////////////////////////////////////////
@@ -402,20 +427,20 @@ def MainpaisIndice(Idtest):
 #///////////////////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////////////////
 #
-# GRAFICO MAIN
+# GRAFICO MAIN Index
 # Chart - Grafico Main Pais 
 #
 #///////////////////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////////////////
 
-@app.route('/Grafico/<idpais>')
-def Mainpais(idpais):
+@app.route('/FaceAnalysisTook/<Idtest>')
+def FaceAnalysisTookTable(Idtest):
     # Connect to the database
     connection = pymysql.connect(host='192.168.100.51',
                                 user='Qatest',
                                 password='Quito.2019',
-                                db='COVID19',
+                                db='Log-identificacion',
                                 charset='utf8mb4',
                                 cursorclass=pymysql.cursors.DictCursor)
 
@@ -424,8 +449,8 @@ def Mainpais(idpais):
 
             #///////////////////////////////
             
-            sql2 = "SELECT Id AS Month, `Total_Personas_Casa` As Sales_Figure, `Total_personas_Salida` AS Perc, Time_Aprox_Salida AS TimeSalida FROM `Data` WHERE `Id_Pais`=%s ORDER BY `Id` DESC LIMIT 100 "
-            cursor.execute(sql2, (idpais))
+            sql2 = "SELECT `Ciclo`, `InfoLog` FROM `FaceAnalysisTook` WHERE `IdTest`=%s ORDER BY `Timeline`"
+            cursor.execute(sql2, (Idtest))
             resultMensajes_Actual = cursor.fetchall()
             Mensajes_Actual = resultMensajes_Actual
             print("Mensaje: ", Mensajes_Actual)
@@ -435,6 +460,78 @@ def Mainpais(idpais):
          
 
         return jsonify(Mensajes_Actual)
+
+    finally:
+        connection.close()
+
+#///////////////////////////////////////////////////////////////////////////
+#///////////////////////////////////////////////////////////////////////////
+#///////////////////////////////////////////////////////////////////////////
+#
+# Face analysis took
+#
+#///////////////////////////////////////////////////////////////////////////
+#///////////////////////////////////////////////////////////////////////////
+#///////////////////////////////////////////////////////////////////////////
+
+@app.route('/FaceAnalysisTook/<idtest>/<idciclo>')
+def FaceAnalysisTook(idtest, idciclo):
+    # Connect to the database
+    connection = pymysql.connect(host='192.168.100.51',
+                                user='Qatest',
+                                password='Quito.2019',
+                                db='Log-identificacion',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with connection.cursor() as cursor:
+
+            #///////////////////////////////
+            
+            sql = "SELECT AVG(TookTime) as Average from  `FaceAnalysisTook`  WHERE `IdTest` =%s AND `Ciclo` =%s  ORDER BY `Id`"
+            cursor.execute(sql, (idtest, idciclo))
+            Average = cursor.fetchone()
+            print(Average)
+            #AVG = str(Average)
+            Avg = str(Average.get('Average'))
+
+            """
+            # Minimo
+            sql2 = "SELECT MIN(TookTime) as Minimo from  `FaceAnalysisTook`  WHERE `IdTest` =%s AND `Ciclo` =%s  ORDER BY `Id`"
+            cursor.execute(sql2, (idtest, idciclo))
+            Minimo = cursor.fetchall()
+            print(Minimo)
+
+            """
+            # Maximo
+            sql3 = "SELECT  MAX(TookTime) as Maximo from  `FaceAnalysisTook`  WHERE `IdTest` =%s AND `Ciclo` =%s  ORDER BY `Id`"
+            cursor.execute(sql3, (idtest, idciclo))
+            Maximo = cursor.fetchone()
+            print(Maximo)
+            Max = str(Maximo.get('Maximo'))
+            
+            # Count
+            sql4 = "SELECT  COUNT(ID) as Count from  `FaceAnalysisTook`  WHERE `IdTest` =%s AND `Ciclo` =%s  ORDER BY `Id`"
+            cursor.execute(sql4, (idtest, idciclo))
+            Count = cursor.fetchone()
+            print(Count)
+            CountR = str(Count.get('Count'))
+            #Count
+            
+            # Suma
+            sql5 = "SELECT  SUM(TookTime) as Suma from  `FaceAnalysisTook`  WHERE `IdTest` =%s AND `Ciclo` =%s  ORDER BY `Id`"
+            cursor.execute(sql5, (idtest, idciclo))
+            Suma = cursor.fetchone()
+            print(Suma)
+            SumaR = str(Suma.get('Suma'))
+            #Count
+            #///////////////////////////
+         
+
+        return jsonify({"Average": Avg, "Maximo": Max, "Count": CountR, "Sum": SumaR})
+
+
 
     finally:
         connection.close()
