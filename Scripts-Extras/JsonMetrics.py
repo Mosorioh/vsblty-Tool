@@ -53,6 +53,7 @@ def AnalysisJsonMetrics (PathMetrics):
     FileMain = 0 
     FileMultiple = 0
     FileSindemographics = 0
+    PersonasDetectas = []
     
     # segun la cantidad de archivos generados (dirs) se recorre uno a uno
     for file in dirs:
@@ -65,11 +66,11 @@ def AnalysisJsonMetrics (PathMetrics):
             
             FileMain += 1
 
-        print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
-        print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
-        print ("File: ",PathFileMetrics)
-        print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
-        print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
+        #print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
+        #print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
+        #print ("File: ",PathFileMetrics)
+        #print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
+        #print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
 
         # 
         FileType = PathFileMetrics.find("json")
@@ -85,7 +86,7 @@ def AnalysisJsonMetrics (PathMetrics):
                 
 
                 JsonFileData = []
-                print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
+                #print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
                 # Asignar Guid para cada Archivo
                 #///////////////////////////////////////////
                 # Generamos Un GUID 
@@ -147,9 +148,9 @@ def AnalysisJsonMetrics (PathMetrics):
                         # ///////////////////////////////////
                         try:
                             demographics = personEngagements [contador]["demographics"]
-                            #bioRecordId = None
-                            print (demographics)
-                            print (bioRecordId)
+                            bioRecordId = None
+                            #print (demographics)
+                            #print (bioRecordId)
                         except:
                             demographics = None
                             
@@ -168,66 +169,13 @@ def AnalysisJsonMetrics (PathMetrics):
                             # ///////////////////////////////////
                             if bioRecordId != "00000000-0000-0000-0000-000000000000":
                                 Name = demographics ["IdentityName"]
-                                if (Name == "Darly Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Darly += 1
-
-                                if (Name == "Alex Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Alex += 1
-
-                                if (Name == "Lenin Edge"):
-                                    print ("Name: ", Name)
-                                    print ("Biorecord: ", bioRecordId)
-                                    Lennin += 1
-
-                                if (Name == "Lebrom Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Lebrom += 1
-
-                                if (Name == "Dewey Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Dewey += 1
+                                PersonasDetectas.append(Name)
 
 
-                                if (Name == "Correa Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Correa += 1
-                                
-                                if (Name == "Kuzma Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Kuzma += 1
-                                
-                                # NBA Clipperas
-                                if (Name == "Kawhi Leonard"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Kawhi += 1
-                                if (Name == "Lou Williams Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Lou += 1
-                                if (Name == "Montrezl Harrell Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Montrezl += 1
-                                if (Name == "Patrick Beverley Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Patrick += 1
-                                if (Name == "Paul George Edge"):
-                                    print ("Biorecord: ", bioRecordId)
-                                    print ("Name: ", Name)
-                                    Paul += 1
-                                                     
+  
+ 
                             else:
-                                print ("Biorecord: ", bioRecordId)
+                                #print ("Biorecord: ", bioRecordId)
                                 Name = "Unidentified Person"
                             
  
@@ -238,6 +186,46 @@ def AnalysisJsonMetrics (PathMetrics):
                         
                     
                 #JsonFileData = [TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements]
+    print ("Personas detect")
+    #print (PersonasDetectas)
+    Darly = PersonasDetectas.count("Darly Edge")
+    Rick = PersonasDetectas.count("Rick Edge")
+    Mishone = PersonasDetectas.count("Mishone Edge")
+    Negan = PersonasDetectas.count("Negan Edge")
+    Mague = PersonasDetectas.count("Mague Edge")
+    Alex = PersonasDetectas.count("Alex Morgan Edge")
+    Dewey = PersonasDetectas.count("Dewey Edge")
+    Romo = PersonasDetectas.count("Romo Edge")
+    Curry = PersonasDetectas.count("Curry Edge")
+    Lenin = PersonasDetectas.count("Lenin Edge")
+    Lebrom = PersonasDetectas.count("Lebrom Edge")
+    Correa = PersonasDetectas.count("Correa Edge")
+    Kuzma = PersonasDetectas.count("Kuzma Edge")
+    Kawhi = PersonasDetectas.count("Kawhi Leonard")
+    Lou = PersonasDetectas.count("Lou Williams Edge")
+    Montrezl = PersonasDetectas.count("Montrezl Harrell Edge")
+    Patrick = PersonasDetectas.count("Patrick Beverley Edge")
+    Paul = PersonasDetectas.count("Paul George Edge")
+
+    Luka = PersonasDetectas.count("Luka  Edge")
+    Milka = PersonasDetectas.count("Milka  Edge")
+
+
+    print ("F1 --- Darly Edge: ", Darly)
+    print ("F1 --- Rick Edge: ", Rick)
+    print ("F1 --- Mishone Edge: ", Mishone)
+    print ("F1 --- Negan Edge: ", Negan)
+    print ("F1 --- Mague Edge: ", Mague)
+    print ("F2 --- Alex Edge: ", Alex)
+    
+    print ("F4 --- Romo Edge: ", Romo)
+    print ("F5 --- Curry Edge: ", Curry)
+
+    print ("B3 --- Lebrom Edge: ", Lebrom)
+    print ("B3 --- Dewey Edge: ", Dewey)
+    print ("B5 --- Luka Edge: ", Luka)
+    print ("B5 --- Milka Edge: ", Milka)
+    print ("////////////////////////////////////////")
     FileMainR = FileMain - 3 
     JsonGenerados = FileMainR + FileMultiple 
 
@@ -247,19 +235,7 @@ def AnalysisJsonMetrics (PathMetrics):
     print ("Total Files Sin Informacion (1k): ", FileSindemographics)
     print ("Total Identificaciones: ", TotalIdentificaciones)
     print ("////////////////////////////////////////////")
-    print ("Camera 2 --- Alex:", Alex) 
-    #print ("Dewey:", Dewey)
-    print ("Camera 3    --- Darly:", Darly)                   
-    print ("Camera 4    --- Lebrom:", Lebrom)
-    print ("Camera 4    --- kuzma:", Kuzma)
-    print ("Camera 5    --- Lennin:", Lennin)
-    print ("Camera 5    --- Correa:", Correa)
-    print ("------ NBA ------")
-    print ("Camera Main --- Kawhi:", Kawhi)                   
-    print ("Camera Main --- Patrick:", Patrick)
-    print ("Camera Main --- Paul:", Paul)
-    print ("Camera Main --- Montrezl:", Montrezl)
-    print ("Camera Main --- Lou:", Lou)
+ 
 
     input () 
                         
