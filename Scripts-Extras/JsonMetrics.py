@@ -36,23 +36,35 @@ def AnalysisJsonMetrics (PathMetrics):
     #print (dirs)
     # variable (i) define el nuemro de identificaciones detectadas (item)
 
+    TotalIdentificaciones = 0
     Alex = 0
     Dewey = 0
     Lebrom = 0
     Darly = 0
-    curry = 0 
-    Duran = 0
+    Lennin = 0 
+    Correa = 0
     Kuzma = 0
     Kawhi = 0
     Lou = 0
     Montrezl = 0
     Patrick = 0
     Paul = 0
+    Filetype = 0
+    FileMain = 0 
+    FileMultiple = 0
+    FileSindemographics = 0
     
     # segun la cantidad de archivos generados (dirs) se recorre uno a uno
     for file in dirs:
         # Creamos la ruta y el archivo que vamos a trabajar
         PathFileMetrics = PathMetrics + file
+        Filetype = file.find("000000000000.Usa")
+        if (Filetype > 0):
+            FileMultiple += 1
+        if (Filetype < 0):
+            
+            FileMain += 1
+
         print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
         print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
         print ("File: ",PathFileMetrics)
@@ -106,7 +118,8 @@ def AnalysisJsonMetrics (PathMetrics):
 
                     #print (personEngagements)
                     contador = len(personEngagements) - 1 # restamos uno debido a que la list comienza en 0
-                    #print ("Contador de personEngagements", contador)
+                    if (contador < 0):
+                        FileSindemographics += 1
   
 
                     # verificamos cuantos Face Fueron detectados el el archivo json   
@@ -125,6 +138,7 @@ def AnalysisJsonMetrics (PathMetrics):
                             Face = personEngagements[contador]["faceId"]
                         except:
                             Face = None
+                            
 
                         #print ("Face: ",Face)
                         
@@ -133,18 +147,21 @@ def AnalysisJsonMetrics (PathMetrics):
                         # ///////////////////////////////////
                         try:
                             demographics = personEngagements [contador]["demographics"]
-                            bioRecordId = None
+                            #bioRecordId = None
                             print (demographics)
                             print (bioRecordId)
                         except:
                             demographics = None
                             
+                            
 
                         if (demographics == None):
                             print ("Face No tiene Informacion demografica")
                             
+                            
                           
                         else:
+                            TotalIdentificaciones += 1
                             bioRecordId = demographics ["bioRecordId"]
                             # ///////////////////////////////////
                             # Validacion de Name y Biorecord
@@ -161,10 +178,10 @@ def AnalysisJsonMetrics (PathMetrics):
                                     print ("Name: ", Name)
                                     Alex += 1
 
-                                if (Name == "Curry Edge"):
+                                if (Name == "Lenin Edge"):
                                     print ("Name: ", Name)
                                     print ("Biorecord: ", bioRecordId)
-                                    curry += 1
+                                    Lennin += 1
 
                                 if (Name == "Lebrom Edge"):
                                     print ("Biorecord: ", bioRecordId)
@@ -177,10 +194,10 @@ def AnalysisJsonMetrics (PathMetrics):
                                     Dewey += 1
 
 
-                                if (Name == "Duran Edge"):
+                                if (Name == "Correa Edge"):
                                     print ("Biorecord: ", bioRecordId)
                                     print ("Name: ", Name)
-                                    Duran += 1
+                                    Correa += 1
                                 
                                 if (Name == "Kuzma Edge"):
                                     print ("Biorecord: ", bioRecordId)
@@ -221,20 +238,28 @@ def AnalysisJsonMetrics (PathMetrics):
                         
                     
                 #JsonFileData = [TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements]
+    FileMainR = FileMain - 3 
+    JsonGenerados = FileMainR + FileMultiple 
 
-    print ("Alex:", Alex) 
-    print ("Dewey:", Dewey)
-    print ("Darly:", Darly)                   
-    print ("Lebrom:", Lebrom)
-    print ("kuzma:", Kuzma)
-    print ("Curry:", curry)
-    print ("Duran:", Duran)
+    print ("Total de Archivos Generados: ", JsonGenerados )
+    print ("File Main: ", FileMainR)
+    print ("FIle Multiple: ", FileMultiple)
+    print ("Total Files Sin Informacion (1k): ", FileSindemographics)
+    print ("Total Identificaciones: ", TotalIdentificaciones)
+    print ("////////////////////////////////////////////")
+    print ("Camera 2 --- Alex:", Alex) 
+    #print ("Dewey:", Dewey)
+    print ("Camera 3    --- Darly:", Darly)                   
+    print ("Camera 4    --- Lebrom:", Lebrom)
+    print ("Camera 4    --- kuzma:", Kuzma)
+    print ("Camera 5    --- Lennin:", Lennin)
+    print ("Camera 5    --- Correa:", Correa)
     print ("------ NBA ------")
-    print ("Kawhi:", Kawhi)                   
-    print ("Patrick:", Patrick)
-    print ("Paul:", Paul)
-    print ("Montrezl:", Montrezl)
-    print ("Lou:", Lou)
+    print ("Camera Main --- Kawhi:", Kawhi)                   
+    print ("Camera Main --- Patrick:", Patrick)
+    print ("Camera Main --- Paul:", Paul)
+    print ("Camera Main --- Montrezl:", Montrezl)
+    print ("Camera Main --- Lou:", Lou)
 
     input () 
                         
