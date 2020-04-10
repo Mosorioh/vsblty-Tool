@@ -8,11 +8,11 @@ from os import remove
 import shutil
 
 # Start 
-print ("Start Cliente") 
+print ("Start Cliente", datetime.datetime.now()) 
 os.startfile('C:\\Users/Mijail/Documents/vsblty-Tool/Scripts-Extras/Start-Client.bat')
 
 # Sleep 
-time.sleep(3600)
+time.sleep(600)
 
 # close Client
 os.system('taskkill -f -im vsb*')

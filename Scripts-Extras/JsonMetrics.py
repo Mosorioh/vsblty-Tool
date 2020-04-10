@@ -219,7 +219,7 @@ def AnalysisJsonMetrics (PathMetrics):
 
     # TWD Elenco
     if (Darly > 0):
-        print ("-- Darly Edge: ", Darly)
+        print ("--- Darly Edge: ", Darly)
     if (Rick > 0):
         print ("--- Rick Edge: ", Rick)
     if (Mishone > 0):
@@ -259,6 +259,9 @@ def AnalysisJsonMetrics (PathMetrics):
         print ("--- Luka Edge: ", Luka)
     if (Milka > 0):
         print ("--- Milka Edge: ", Milka)
+    if (Kuzma > 0):
+        print ("--- Kuzma Edge: ", Kuzma)
+
 
 
 
