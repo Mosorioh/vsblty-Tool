@@ -276,7 +276,7 @@ def AnalysisMetrics (TestID, GuidTest, CountTest):
                         
                     
                 #JsonFileData = [TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements]
-    input () 
+    #input () 
     print ("////////////////////////////////////////")
     print ("Personas Detected")
     print ("////////////////////////////////////////")
