@@ -30,4 +30,4 @@ def AddLogEmail (TestID, GuidTest, CountTest, Time, LineLogEmail, PersonName, Pe
             print ("Registro del Email Fue Insertado corectamente")
 
     finally:
-        connection.close()
+        connection.close() 

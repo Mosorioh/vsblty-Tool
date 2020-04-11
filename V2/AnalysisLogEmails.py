@@ -78,9 +78,14 @@ def AnalysisLogEmails (TestID, GuidTest, CountTest):
                 PersonId = ClientLine[CortePersonId:-32] 
 
                 TotalEmails += 1
+                print (Time)
+                print (LineaLog)
+                print (PersonName)
+                print(PersonId)
+                #input ()
                 from AddLogEmails import AddLogEmail
                 AddLogEmail (TestID, GuidTest, CountTest, Time, LineLogEmail, PersonName, PersonId)
             
-
+ 
     return TotalEmails  
 

@@ -79,6 +79,13 @@ BetweenPictures = TimeBetweenPictures
 from GetGlobalVars import FaceAnalysisOptimization
 FaceAnalysisOptimization = FaceAnalysisOptimization
 
+
+#///////////////////////////////////////////
+# Get Face Analysis Optimization
+#///////////////////////////////////////////
+from GetGlobalVars import OVServicesType
+OVServicesType = OVServicesType
+
 #///////////////////////////////////////////
 # Get Camera Mode
 #///////////////////////////////////////////
@@ -104,7 +111,7 @@ NumerodeCiclos = 4
 #///////////////////////////////////////////
 # Duracion Por Prueba
 #///////////////////////////////////////////
-DuracionTest = 300
+DuracionTest = 60
 
 #///////////////////////////////////////////
 # Descripcion

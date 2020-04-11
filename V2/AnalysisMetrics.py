@@ -23,6 +23,9 @@ import uuid
 
 
 def AnalysisMetrics (TestID, GuidTest, CountTest):
+    from Setting import OVServicesType, FaceAnalysisOptimization
+    OVServicesType = OVServicesType
+    FaceAnalysisOptimization = FaceAnalysisOptimization
     print ("********************************************")
     print ("******************************************************")
     print ("          Inicio Analisis de los Archivos Json Metrics")
@@ -216,9 +219,9 @@ def AnalysisMetrics (TestID, GuidTest, CountTest):
         # para main tiene 6 caras "Clippers"
     FacesMainEstimadas = FileMainR * 6
         # para Multiple camara se asume que son 25 json cada 10 min
-    FacesMultiEstimadas = 25 * 4
+    FacesMultiEstimadas = 25 * 3
     FacesEstimadas = FacesMainEstimadas + FacesMultiEstimadas
-    IdentificacionEstimada = 250
+    IdentificacionEstimada = 225
 
     # calculo de efectividad
     EfectividadFacesdetected = "{0:.2f}".format((FaceConDemographics * 100 / FacesEstimadas))
@@ -268,7 +271,7 @@ def AnalysisMetrics (TestID, GuidTest, CountTest):
     print ("***************************************************") 
 
     from AddJsonTest import AddJsonTest
-    AddJsonTest (TestID, GuidTest, CountTest, JsonGenerados, FileMainR, FileMultiple, FaceIdDetectados, FaceConDemographics,FileSindemographics, TotalIdentificaciones, PersonasNoIdentificadas, FacesEstimadas, IdentificacionEstimada, EfectividadFacesdetected, Efectividadidentidicaciones)
+    AddJsonTest (TestID, GuidTest, CountTest, JsonGenerados, FileMainR, FileMultiple, FaceIdDetectados, FaceConDemographics,FileSindemographics, TotalIdentificaciones, PersonasNoIdentificadas, FacesEstimadas, IdentificacionEstimada, EfectividadFacesdetected, Efectividadidentidicaciones, OVServicesType, FaceAnalysisOptimization)
                 
                                             
 

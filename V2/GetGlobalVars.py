@@ -46,6 +46,7 @@ def Getvaribles():
         DemographicRulesTimer = str(decoded["List"][52]["Value"])
         PollingCamera = str(decoded["List"][27]["Value"])
         ContentSwappedInterval = str(decoded["List"][10]["Value"])
+        ServicesType = str(decoded["List"][104]["Value"])
 
 
 
@@ -57,7 +58,7 @@ def Getvaribles():
         TimeBetweenPictures, ReocurringVisitor, ObjectDetection,
         NatsServer, NatsServerUrl, NatsSubscriber, NatsSubscriberEndpoint, LiveEndpointData,
         Identity, EnticeOnly, SAD, BodyDetection, EmailPublisherThreshold,
-        EmailPublisherExpiration, DemograhicDataExpiration, DemographicRulesTimer, PollingCamera, ContentSwappedInterval]
+        EmailPublisherExpiration, DemograhicDataExpiration, DemographicRulesTimer, PollingCamera, ContentSwappedInterval, ServicesType]
     return EndpointSetting
 
 
@@ -84,10 +85,11 @@ DemograhicDataExpiration = EndpointSetting[16]
 DemographicRulesTimer  = EndpointSetting[17]
 PollingCamera  = EndpointSetting[18]
 ContentSwappedInterval  = EndpointSetting[19]
+OVServicesType = EndpointSetting[20]
 
 """
 print ("EdgeDetection ", EdgeDetection)
-print (FaceAnalysisOptimization)
+print ("Optimization ",FaceAnalysisOptimization)
 print (TimeBetweenPictures)
 print (ReocurringVisitor)
 print (ObjectDetection)
@@ -106,5 +108,6 @@ print (DemograhicDataExpiration)
 print (DemographicRulesTimer)
 print (PollingCamera)
 print (ContentSwappedInterval)
+print ("ServicesType", OVServicesType)
 input()
 """
