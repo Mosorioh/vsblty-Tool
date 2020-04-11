@@ -262,8 +262,8 @@ while CountTest <= NumerodeCiclos:
 
     # Emails
     print ("///// Log Emails ///////")
-    from AnalysisLogEmails import AnalysisLogEmails
-    TotalEmails = AnalysisLogEmails (TestID, GuidTest, CountTest)
+    #from AnalysisLogEmails import AnalysisLogEmails
+    #TotalEmails = AnalysisLogEmails (TestID, GuidTest, CountTest)
 
     # Face Analysis Function took
     print ("///// Log Face Analysis Function took ///////")
@@ -315,10 +315,18 @@ while CountTest <= NumerodeCiclos:
     TotalFileMetricsIdentification = JsonFileData[1]
     TotalFIleSinPersonEngagements = JsonFileData[2]
 
+    #////////////////////////////////////////////////////
+    # *******************
+    # Analisi test
+    # *******************
+    #///////////////////////////////////////////////////
+    from AnalysisMetrics import AnalysisMetrics
+    AnalysisMetrics (TestID, GuidTest, CountTest)
+
     #///////////////////////////////////////////////////
     # Insertar resultados tptales CycleSummary DB
-    from AddCycleSummary import addCycleSummary
-    addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0], TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification[0], CpuAvg, RamAvg, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements, TotalEmails)
+    #from AddCycleSummary import addCycleSummary
+    #addCycleSummary (TestID, GuidTest, CountTest, TotalFaceIdentificacion, TotalFrameReceived[0], TotalBeforeProcessing[0], TotalError, TotalFrameLocalPhotos, TotalFrameAfterIdentification[0], CpuAvg, RamAvg, TotalFilesGenerados, TotalFileMetricsIdentification, TotalFIleSinPersonEngagements, TotalEmails)
     #input()
 
     #/////////////////////////////////////////////////////

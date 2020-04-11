@@ -20,15 +20,16 @@ import pymysql
 # GUID
 import uuid 
 
-PathMetrics = "C:/ProgramData/Vsblty/Kiosk Framework/Usage/"
 
-def AnalysisJsonMetrics (PathMetrics):
+
+def AnalysisMetrics (TestID, GuidTest, CountTest):
     print ("********************************************")
     print ("******************************************************")
     print ("          Inicio Analisis de los Archivos Json Metrics")
     print ("******************************************************")
     print ("********************************************")
     # Verificar la cantidad de archivos Log que se generaron
+    PathMetrics = "C:/ProgramData/Vsblty/Kiosk Framework/Usage/"
 
     print ("Ruta Folder: ", PathMetrics)
     # variable dirs contiene la lista de archivos generados
@@ -38,7 +39,6 @@ def AnalysisJsonMetrics (PathMetrics):
 
     FaceIdDetectados = 0
     FaceConDemographics = 0
-    FaceSinDemographics = 0
     PersonasNoIdentificadas = 0 
 
 
@@ -60,7 +60,6 @@ def AnalysisJsonMetrics (PathMetrics):
     FileMain = 0 
     FileMultiple = 0
     FileSindemographics = 0
-    FaceDeteted = 0
     PersonasDetectas = []
     
     # segun la cantidad de archivos generados (dirs) se recorre uno a uno
@@ -97,7 +96,7 @@ def AnalysisJsonMetrics (PathMetrics):
             else:
                 
 
-                JsonFileData = []
+                #JsonFileData = []
                 #print ("/////////////////////////////////////////////////////////////////////////////////////////////////////////////")
                 # Asignar Guid para cada Archivo
                 #///////////////////////////////////////////
@@ -166,9 +165,11 @@ def AnalysisJsonMetrics (PathMetrics):
                         
                         try:
                             FaceId = personEngagements[FaceIds]["faceId"]
+                            print (FaceId)
                         except:
                             FaceId = None
-                            
+                        
+
                         # ///////////////////////////////////
                         # Datos demograficos
                         # ///////////////////////////////////
@@ -231,6 +232,11 @@ def AnalysisJsonMetrics (PathMetrics):
     # ////////////////////////////////////////////////////
     print ("///////////////////////////////////////////////////")                     
     print ("***************************************************")
+    print ("Test Id", TestID)
+    print ("Guid: ", GuidTest)
+    print ("Ciclo: ", CountTest)
+    print ("///////////////////////////////////////////////////")                     
+    print ("***************************************************")
     print ("***************************************************")                   
     print ("///////////////////////////////////////////////////")
     print ("Total de Archivos Generados: ", JsonGenerados )
@@ -260,6 +266,9 @@ def AnalysisJsonMetrics (PathMetrics):
     print ("///////////////////////////////////////////////////")
     print ("***************************************************")
     print ("***************************************************") 
+
+    from AddJsonTest import AddJsonTest
+    AddJsonTest (TestID, GuidTest, CountTest, JsonGenerados, FileMainR, FileMultiple, FaceIdDetectados, FaceConDemographics,FileSindemographics, TotalIdentificaciones, PersonasNoIdentificadas, FacesEstimadas, IdentificacionEstimada, EfectividadFacesdetected, Efectividadidentidicaciones)
                 
                                             
 
@@ -343,17 +352,8 @@ def AnalysisJsonMetrics (PathMetrics):
 
 
 
-
-
-
-    print ("Faces Estimadas: ", FacesEstimadas)
-    print ("Total Personas Detectadas: ", FaceDeteted)
-    print ("Total Identificaciones:    ", TotalIdentificaciones)
-    print ("////////////////////////////////////////////")
- 
-
-    input () 
+    #input () 
                         
-    return JsonFileData
+    #return JsonFileData
 
-AnalysisJsonMetrics (PathMetrics)
+#AnalysisMetrics (PathMetrics)
