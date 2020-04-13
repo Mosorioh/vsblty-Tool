@@ -8,10 +8,16 @@ from Conexion import Conexion
 
 
 def AddJsonTest (TestID, GuidTest, CountTest, JsonGenerados, FileMainR, FileMultiple, FaceIdDetectados, FaceConDemographics,FileSindemographics, TotalIdentificaciones, PersonasNoIdentificadas, FacesEstimadas, IdentificacionEstimada, EfectividadFacesdetected, Efectividadidentidicaciones, OVServicesType, FaceAnalysisOptimization):
+    
     EfectividadFacesdetected = float(EfectividadFacesdetected)
     print (EfectividadFacesdetected)
     if ( EfectividadFacesdetected > 100):
         EfectividadFacesdetected = 100
+   
+    Efectividadidentidicaciones = float(Efectividadidentidicaciones)
+    print (Efectividadidentidicaciones)
+    if ( Efectividadidentidicaciones > 100):
+        Efectividadidentidicaciones = 100
     
     # Connect to the database
     connection = pymysql.connect(host=Conexion[0],

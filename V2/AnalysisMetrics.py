@@ -219,9 +219,10 @@ def AnalysisMetrics (TestID, GuidTest, CountTest):
         # para main tiene 6 caras "Clippers"
     FacesMainEstimadas = FileMainR * 6
         # para Multiple camara se asume que son 25 json cada 10 min
-    FacesMultiEstimadas = 25 * 3
+    # FacesMultiEstimadas = 25 * 3 # Multiple camera (4)
+    FacesMultiEstimadas = 25 * 0
     FacesEstimadas = FacesMainEstimadas + FacesMultiEstimadas
-    IdentificacionEstimada = 225
+    IdentificacionEstimada = 180
 
     # calculo de efectividad
     EfectividadFacesdetected = "{0:.2f}".format((FaceConDemographics * 100 / FacesEstimadas))
@@ -304,6 +305,7 @@ def AnalysisMetrics (TestID, GuidTest, CountTest):
     Paul = PersonasDetectas.count("Paul George  Edge")
     Luka = PersonasDetectas.count("Luka  Edge")
     Milka = PersonasDetectas.count("Milka  Edge")
+    Doc = PersonasDetectas.count("Doc Rivers Edge")
 
      # Clippers
     if (Lou > 0):
@@ -316,6 +318,8 @@ def AnalysisMetrics (TestID, GuidTest, CountTest):
         print ("--- Paul Edge: ", Paul)
     if (Kawhi > 0):
         print ("--- Kawhi Edge: ", Kawhi)
+    if (Doc > 0):
+        print ("--- Doc Rivers Edge: ", Doc)
 
     print("----------- Camera Main -----------")
     # TWD Elenco
