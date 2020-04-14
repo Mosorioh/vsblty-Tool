@@ -106,7 +106,7 @@ def CameraMode (PollingCamera, TotalCameraSetting):
 #///////////////////////////////////////////
 # Get Numero de Ciclos por cada Prueba
 #///////////////////////////////////////////
-NumerodeCiclos = 4
+NumerodeCiclos = 2
 
 #///////////////////////////////////////////
 # Duracion Por Prueba
